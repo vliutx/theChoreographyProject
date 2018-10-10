@@ -1,0 +1,49 @@
+html{
+	color: white;
+	background-color: maroon;
+	font-family: cursive;
+}
+.main{
+	position: relative;
+	top: 300px;
+	text-align: center;
+
+}
+.nav{
+	position: absolute;
+	top: 3px;
+}
+a{
+	color: white;
+	text-decoration: none;
+	padding: 60px;
+}
+input[type=text]{
+	font-family: cursive;
+	color: black;
+	width: 400px;
+	padding: 10px;
+	margin: 6px 0;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+.about{
+	position: relative;
+	top: 600px;
+	margin: 20px;
+}
+.footer{
+	position: relative;
+	top: 640px;
+	left: 20px;
+}
+.recent{
+	position: relative;
+	top: 400px;
+}
+img{
+	width: 190px;
+	border: 0px;
+	margin: 0px;	
+}
