@@ -1,13 +1,9 @@
 html{
+	min-width: 960px;
+	width: 960px;
 	color: white;
 	background-color: maroon;
-	font-family: cursive;
-}
-.main{
-	position: relative;
-	top: 300px;
-	text-align: center;
-
+	font-family: Courier New;
 }
 .nav{
 	position: absolute;
@@ -16,7 +12,20 @@ html{
 a{
 	color: white;
 	text-decoration: none;
-	padding: 60px;
+	padding: 55px;
+}
+.main{
+	position: relative;
+	top: 200px;
+	text-align: center;
+}
+div.main > img{
+	position: relative;
+	width: 150px;
+	height: 150px;
+	top: 100px;
+	right: 200px;
+	z-index: -1;
 }
 input[type=text]{
 	font-family: cursive;
@@ -28,22 +37,48 @@ input[type=text]{
 	border-radius: 4px;
 	box-sizing: border-box;
 }
-.about{
-	position: relative;
-	top: 600px;
-	margin: 20px;
-}
-.footer{
-	position: relative;
-	top: 640px;
-	left: 20px;
-}
 .recent{
 	position: relative;
-	top: 400px;
+	top: 450px;
 }
-img{
+table{
+	width: 860px;
+	text-align: center;
+}
+a > img{
 	width: 190px;
 	border: 0px;
 	margin: 0px;	
+}
+@media (max-width: 1000px){
+	.about{
+		position: relative;
+		top: 600px;
+		margin: 20px;
+	}
+	.footer{
+		position: relative;
+		top: 640px;
+		left: 20px;
+	}
+	div.footer > a{
+		padding: 0px;
+	}
+}
+@media (min-width: 1000px){
+	.about{
+		position: relative;
+		top: -200px;
+		left: 1000px;
+		width: 860px;
+	}
+	.footer{
+		position: relative;
+		top: -180px;
+		left: 1000px;
+		width: 860px;
+	}
+	div.footer > a{
+		padding: 0px;
+	}
 }
