@@ -1,0 +1,36 @@
+html{
+	color: white;
+	background-color: maroon;
+	font-family: Courier New;
+}
+.nav{
+	position: absolute;
+	top: 3px;
+	left: 50%;
+	margin-left: -470px;
+	width: 960px;
+}
+.nav a{
+	color: white;
+	text-decoration: none;
+	padding: 55px 55px 0px 55px;
+}
+.about{
+	overflow: hidden;
+}
+.theresa{
+	display: in-line bock;
+	position: relative;
+	float: left;
+	width: 700px;
+	height: 700px;
+}
+.vincent{
+	position: relative;
+	float: right;
+	width: 700px;
+	height: 700px;
+}
+img {
+	height: 300px;
+}
