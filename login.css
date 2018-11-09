@@ -1,89 +1,53 @@
 html{
-	min-width: 960px;
-	width: 960px;
 	color: white;
 	background-color: maroon;
 	font-family: Courier New;
 }
-h1 {
-	position: absolute;
-	top: 9%;
-	left: 19.7%;
-}
 .nav{
 	position: absolute;
 	top: 3px;
+	left: 50%;
+	margin-left: -470px;
+	width: 960px;
 }
 a{
 	color: white;
 	text-decoration: none;
-	padding: 55px;
+	padding: 55px 55px 0px 55px;
 }
-form {
+h1 {
 	position: relative;
-	top: 200px;
+	top: 50px;
 	text-align: center;
+	
 }
-div.main > img{
-	position: relative;
-	width: 150px;
-	height: 150px;
-	top: 100px;
-	right: 200px;
-	z-index: -1;
+.login {
+	position: absolute;
+	top: 170px;
+	left: 50%;
+	margin-left: -250px;
 }
 input[type=text]{
-	font-family: cursive;
+	position: relative;
+	text-align: center;
+	font: inherit;
 	color: black;
-	width: 400px;
+	width: 500px;
 	padding: 10px;
 	margin: 6px 0;
 	border: 1px solid #aaa;
 	border-radius: 4px;
 	box-sizing: border-box;
 }
-.recent{
-	position: relative;
-	top: 450px;
-}
-table{
-	width: 860px;
+input[type=submit], input[type=reset]{
 	text-align: center;
+	background: none;
+	border: none;
+	font: inherit;
+	font-size: 20px;
+	color: white;
+	margin: 20px 75px 0px 75px;
 }
-a > img{
-	width: 190px;
-	border: 0px;
-	margin: 0px;	
-}
-@media (max-width: 1000px){
-	.about{
-		position: relative;
-		top: 600px;
-		margin: 20px;
-	}
-	.footer{
-		position: relative;
-		top: 640px;
-		left: 20px;
-	}
-	div.footer > a{
-		padding: 0px;
-	}
-}
-@media (min-width: 1000px){
-	.about{
-		position: relative;
-		top: -200px;
-		left: 1000px;
-		width: 860px;
-	}
-	.footer{
-		position: relative;
-		top: -180px;
-		left: 1000px;
-		width: 860px;
-	}
-	div.footer > a{
-		padding: 0px;
-	}
+input[type=submit]:hover, input[type=reset]:hover{
+	cursor: pointer;
 }
