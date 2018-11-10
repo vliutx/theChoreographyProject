@@ -1,0 +1,59 @@
+html{
+	color: white;
+	background-color: maroon;
+	font-family: Courier New;
+}
+.nav{
+	position: absolute;
+	top: 3px;
+	left: 50%;
+	margin-left: -470px;
+	width: 960px;
+}
+.nav a{
+	color: white;
+	text-decoration: none;
+	padding: 55px 55px 0px 55px;
+}
+.main a, .recent a{
+	color: white;
+	text-decoration: none;
+}
+.main{
+	position: relative;
+	top: 40px;
+	text-align: center;
+}
+div.main > img{
+	position: relative;
+	width: 150px;
+	height: 150px;
+	top: 180px;
+	right: 300px;
+	z-index: -1;
+}
+input[type=text]{
+	font-family: cursive;
+	color: black;
+	width: 400px;
+	padding: 10px;
+	margin: 6px 0;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+.recent{
+	position: relative;
+	left: 50%;
+	top: 250px;
+	margin-left: -450px;
+}
+table{
+	width: 860px;
+	text-align: center;
+}
+a > img{
+	width: 190px;
+	border: 0px;
+	margin: 0px;	
+}
