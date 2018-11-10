@@ -1,4 +1,6 @@
 html{
+	width: 100%;
+	overflow: hidden;
 	color: white;
 	background-color: maroon;
 	font-family: Courier New;
