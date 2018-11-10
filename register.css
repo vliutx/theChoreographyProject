@@ -15,12 +15,12 @@ a{
 	text-decoration: none;
 	padding: 55px 55px 0px 55px;
 }
-input[type=text]{
+input[type=text], input[type=password]{
 	position: relative;
 	text-align: center;
 	font: inherit;
 	color: black;
-	width: 500px
+	width: 500px;
 	padding: 10px;
 	margin: 6px 0;
 	border: 1px solid #aaa;
@@ -28,21 +28,22 @@ input[type=text]{
 	box-sizing: border-box;
 }
 .register{
-	float: left;
-	margin-left: 250px;
-	margin-top: 150px;
-	margin-right: 50px;
+	position: absolute;
+	top: 170px;
+	left: 50%;
+	margin-left: -250px;
 }
 .rules{
-	float: right;
+	position: absolute;
 	width: 600px;
-	margin-top: 150px;
-	margin-right: 250px;
+	top: 550px;
+	left: 50%;
+	margin-left: -290px;
 }
 h1{
 	position: relative;
-	top: 100px;
-	margin-left: 250px;
+	top: 50px;
+	text-align: center;
 }
 input[type=submit], input[type=reset]{
 	text-align: center;
