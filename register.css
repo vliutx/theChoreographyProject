@@ -27,6 +27,12 @@ input[type=text]{
 	border-radius: 4px;
 	box-sizing: border-box;
 }
+.register{
+	float: left;
+	margin-left: 250px;
+	margin-top: 150px;
+	margin-right: 50px;
+}
 .rules{
 	float: right;
 	width: 600px;
