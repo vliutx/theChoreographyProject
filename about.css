@@ -29,3 +29,29 @@ h1{
 	top: 50px;
 	text-align: center;
 }
+.theresa{
+	float: left;
+	max-width: 800px;
+}
+.theresa img{
+	position: relative;
+	left: 200px;
+	height: 400px;
+	width: 400px;
+}
+.vincent{
+	float: right;
+	max-width: 800px;
+}
+.vincent img{
+	position: relative;
+	left: -300px;
+	top: -170px;
+}
+figure{
+	position: relative;
+	width: 400px;
+	height: 400px;
+	left: 200px;
+	overflow: hidden;
+}
