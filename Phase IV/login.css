@@ -1,0 +1,52 @@
+html{
+	color: white;
+	background-color: maroon;
+	font-family: Courier New;
+}
+.nav{
+	position: absolute;
+	top: 3px;
+	left: 50%;
+	margin-left: -470px;
+	width: 960px;
+}
+a{
+	color: white;
+	text-decoration: none;
+	padding: 55px 55px 0px 55px;
+}
+h1{
+	position: relative;
+	top: 50px;
+	text-align: center;
+}
+.login{
+	position: absolute;
+	top: 170px;
+	left: 50%;
+	margin-left: -250px;
+}
+input[type=text], input[type=password]{
+	position: relative;
+	text-align: center;
+	font: inherit;
+	color: black;
+	width: 500px;
+	padding: 10px;
+	margin: 6px 0;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+input[type=submit], input[type=reset]{
+	text-align: center;
+	background: none;
+	border: none;
+	font: inherit;
+	font-size: 20px;
+	color: white;
+	margin: 20px 75px 0px 75px;
+}
+input[type=submit]:hover, input[type=reset]:hover{
+	cursor: pointer;
+}

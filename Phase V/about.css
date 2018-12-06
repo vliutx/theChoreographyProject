@@ -1,0 +1,60 @@
+html{
+	color: white;
+	background-color: maroon;
+	font-family: Courier New;
+}
+.nav{
+	position: absolute;
+	top: 3px;
+	left: 50%;
+	margin-left: -470px;
+	width: 960px;
+}
+.nav a{
+	color: white;
+	text-decoration: none;
+	padding: 55px 55px 0px 55px;
+}
+.about{
+	display: inline-block;
+	position: relative;
+	top: 60px;
+	margin: 0px 50px 0px 50px;
+}
+.bio{
+	position: relative;
+	top: 60px;
+}
+h1{
+	position: relative;
+	top: 50px;
+	text-align: center;
+}
+.theresa{
+	float: left;
+	max-width: 800px;
+}
+.theresa img{
+	position: relative;
+	left: 200px;
+	height: 400px;
+	width: 400px;
+}
+.vincent{
+	position: relative;
+	left: -25px;
+	float: right;
+	max-width: 800px;
+}
+.vincent img{
+	position: relative;
+	left: -300px;
+	top: -170px;
+}
+figure{
+	position: relative;
+	width: 400px;
+	height: 400px;
+	left: 160px;
+	overflow: hidden;
+}
