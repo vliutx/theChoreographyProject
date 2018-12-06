@@ -5,3 +5,49 @@ if (isset($_POST['submit'])){
 }
 
 ?>
+
+<html>
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" title="styling" type="text/css" href="./register.css" media="all">
+	<script type="text/javascript" src="./register.js" defer></script>
+</head>
+<body>
+	<div class="nav">
+		<a href="./home.html">Home</a>
+		<a href="./about.html">About</a>
+		<a href="./contact.html">Contact Us</a>
+		<a href="./login.html">Login</a>
+		<a href="">Register</a>
+	</div>
+	
+	<h1>Register a New Account</h1>
+	<div class="register">
+		<form id="credentials" method="POST">
+			<label for="user">User Name:</label><br>
+			<input type="text" name="user" id="user">
+			<br><br>
+			<label for="pass">Password:</label><br>
+			<input type="password" name="pass" id="pass">
+			<br><br>
+			<label for="pass2">Repeat Password:</label><br>
+			<input type="password" name="pass2" id="pass2">
+			<br><br>
+			<input type="submit" name="Submit">
+			<input type="reset" name="Clear">
+		</form>
+	</div>
+
+	<div class="rules">
+		<h2>Registration Criteria:</h2>
+		<ul>
+			<li> The user name must be between 6 and 10 characters long</li>
+			<li> The user name must contain only letters and digits</li>
+			<li> The user name cannot begin with a digit</li>
+			<li> The password must be between 6 and 10 characters long</li>
+			<li> The password must contain only letters and digits</li>
+			<li> The password must have at least one lower case letter, at least one upper case letter, and at least one digit</li>
+		</ul>
+	</div>
+</body>
+</html>
