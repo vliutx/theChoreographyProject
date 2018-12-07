@@ -5,7 +5,7 @@ print <<<HEADER
 <head>
 	<title>Register</title>
 	<link rel="stylesheet" title="styling" type="text/css" href="./register.css" media="all">
-	<script type="text/javascript" src="./register.js" defer></script>
+	<script type="text/javascript" src="js/register.js" defer></script>
 </head>
 <body>
 	<div class="nav">
@@ -20,7 +20,7 @@ HEADER;
 
 if (isset($_POST['submit'])){
 	
-	<script src="register.js"></script>
+	<script src="js/register.js"></script>
 	$invalid = $_GET["invalid"];
 	
 	if ($invalid == 0) {
