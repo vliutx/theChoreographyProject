@@ -1,107 +1,133 @@
 <?php
 
 print <<<HEADER
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Register</title>
-	<link rel="stylesheet" title="styling" type="text/css" href="./register.css" media="all">
-	<script type="text/javascript" src="js/register.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Registration Page</title>
+    
+	<!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="css/all.min.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/landing-page.min.css" rel="stylesheet">
 </head>
+
 <body>
-	<div class="nav">
-		<a href="./home.html">Home</a>
-		<a href="./about.html">About</a>
-		<a href="./contact.html">Contact Us</a>
-		<a href="./login.html">Login</a>
-		<a href="">Register</a>
-	</div>
-	<h1>Register a New Account</h1>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="home.html">Home</a>
+        <a class="navbar-brand" href="about.html">About</a>
+        <a class="navbar-brand" href="contact.html">Contact</a>
+        <a class="btn btn-secondary" href="register.php">Register</a>
+        <a class="btn btn-primary" href="">Sign In</a>
+      </div>
+    </nav>
 HEADER;
 
 if (isset($_POST['submit'])){
 	
-	<script src="js/register.js"></script>
-	$invalid = $_GET["invalid"];
+	// <script type="text/javascript" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/tls3375/Phase%20V/register.js"></script>
+	// $invalid = $_GET["invalid"];
 	
-	if ($invalid == 0) {
+	// if ($invalid == 0) {
 		
-		if (isset($_POST["user"]) && isset($_POST["pass"])) {
+		// if (isset($_POST["user"]) && isset($_POST["pass"])) {
 		
-		// Get values submitted from the login form
-		$username = $_POST["user"];
-		$password = $_POST["pass"];
+		// // Get values submitted from the login form
+		// $username = $_POST["user"];
+		// $password = $_POST["pass"];
 		
-		// Load list of registered usernames and passwords
-		$list = loadUsers();
+		// // Load list of registered usernames and passwords
+		// $list = loadUsers();
 		
-		// Verify that username is not taken
-		$found = FALSE;
-		foreach ($list as $regUser => $regPass) {
-			if ($username == $regUser) {
-				$found = TRUE;
-			}
-		}
+		// // Verify that username is not taken
+		// $found = FALSE;
+		// foreach ($list as $regUser => $regPass) {
+			// if ($username == $regUser) {
+				// $found = TRUE;
+			// }
+		// }
 		
-		// If duplicate username is found, display error message
-		// Prompts registration form again
-		if ($found == TRUE) {
-			echo "<p>Username already registered, try again.</p>";
-		}
+		// // If duplicate username is found, display error message
+		// // Prompts registration form again
+		// if ($found == TRUE) {
+			// echo "<p>Username already registered, try again.</p>";
+		// }
 		
-		// If username is available, append to list of users/passwords
-		// Redirects back to home page
-		else {
+		// // If username is available, append to list of users/passwords
+		// // Redirects back to home page
+		// else {
 			
-			// add new user/pass combo to SQL database
-			$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
-			$sql = "INSERT INTO users (username, password) VALUES ('username','$password')";
-			mysqli_query($con, $sql);
-			mysqli_close($con);
-			echo "<script>
-			alert('Thank you, 1 student record added.');
-			</script>";
+			// // add new user/pass combo to SQL database
+			// $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
+			// $sql = "INSERT INTO users (username, password) VALUES ('username','$password')";
+			// mysqli_query($con, $sql);
+			// mysqli_close($con);
+			// echo "<script>
+			// alert('Thank you, 1 student record added.');
+			// </script>";
 			
-			// Set cookie and redirect to home page
-			setcookie("user", $username);
-			header("Location: home.html");
-			die;
-	}
+			// // Set cookie and redirect to home page
+			// setcookie("user", $username);
+			// header("Location: home.html");
+			// die;
+	// }
 	
-}
-	}
-	else {
-		echo "<p>Invalid input. Please check rules and try again.</p>";
-	}
+// }
+	// }
+	// else {
+		// echo "<p>Invalid input. Please check rules and try again.</p>";
+	// }
 }
 
 print <<<FORM
-	<div class="register">
-		<form id="credentials" method="POST">
-			<label for="user">User Name:</label><br>
-			<input type="text" name="user" id="user">
-			<br><br>
-			<label for="pass">Password:</label><br>
-			<input type="password" name="pass" id="pass">
-			<br><br>
-			<label for="pass2">Repeat Password:</label><br>
-			<input type="password" name="pass2" id="pass2">
-			<br><br>
-			<input type="submit" name="Submit">
-			<input type="reset" name="Clear">
-		</form>
-	</div>
-
-	<div class="rules">
-		<h2>Registration Criteria:</h2>
-		<ul>
-			<li> The user name must be between 6 and 10 characters long</li>
-			<li> The user name must contain only letters and digits</li>
-			<li> The user name cannot begin with a digit</li>
-			<li> The password must be between 6 and 10 characters long</li>
-			<li> The password must contain only letters and digits</li>
-			<li> The password must have at least one lower case letter, at least one upper case letter, and at least one digit</li>
-		</ul>
-	</div>
+    <section class="call-to-action text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h2 class="mb-4">Register a New Account</h2>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form>
+				<div class="form-row">
+					<div class="col-12 col-md-9 mb-2 mb-md-0">
+					  <input type="text" class="form-control form-control-lg" id="user" placeholder="Enter a username">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-12 col-md-9 mb-2 mb-md-0">
+					  <input type="password" class="form-control form-control-lg" id="pass" placeholder="Enter a password">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-12 col-md-9 mb-2 mb-md-0">
+					  <input type="password" class="form-control form-control-lg" id="pass2" placeholder="Re-enter your password">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-12 col-md-3">
+					  <button type="submit" class="btn btn-block btn-lg btn-primary">Register</button>
+					</div>
+				</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+	
+</div>
 </body>
 </html>
 FORM;
