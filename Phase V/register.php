@@ -1,11 +1,6 @@
 <?php
 
-if (isset($_POST['submit'])){
-	//something
-}
-
-?>
-
+print <<<HEADER
 <html>
 <head>
 	<title>Register</title>
@@ -20,8 +15,66 @@ if (isset($_POST['submit'])){
 		<a href="./login.html">Login</a>
 		<a href="">Register</a>
 	</div>
-	
 	<h1>Register a New Account</h1>
+HEADER;
+
+if (isset($_POST['submit'])){
+	
+	<script src="register.js"></script>
+	$invalid = $_GET["invalid"];
+	
+	if ($invalid == 0) {
+		
+		if (isset($_POST["user"]) && isset($_POST["pass"])) {
+		
+		// Get values submitted from the login form
+		$username = $_POST["user"];
+		$password = $_POST["pass"];
+		
+		// Load list of registered usernames and passwords
+		$list = loadUsers();
+		
+		// Verify that username is not taken
+		$found = FALSE;
+		foreach ($list as $regUser => $regPass) {
+			if ($username == $regUser) {
+				$found = TRUE;
+			}
+		}
+		
+		// If duplicate username is found, display error message
+		// Prompts registration form again
+		if ($found == TRUE) {
+			echo "<p>Username already registered, try again.</p>";
+		}
+		
+		// If username is available, append to list of users/passwords
+		// Redirects back to home page
+		else {
+			
+			// add new user/pass combo to SQL database
+			$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
+			$sql = "INSERT INTO users (username, password) VALUES ('username','$password')";
+			mysqli_query($con, $sql);
+			mysqli_close($con);
+			echo "<script>
+			alert('Thank you, 1 student record added.');
+			</script>";
+			
+			// Set cookie and redirect to home page
+			setcookie("user", $username);
+			header("Location: home.html");
+			die;
+	}
+	
+}
+	}
+	else {
+		echo "<p>Invalid input. Please check rules and try again.</p>";
+	}
+}
+
+print <<<FORM
 	<div class="register">
 		<form id="credentials" method="POST">
 			<label for="user">User Name:</label><br>
@@ -51,3 +104,31 @@ if (isset($_POST['submit'])){
 	</div>
 </body>
 </html>
+FORM;
+
+function loadUsers() {
+	$users = array();
+	$passes = array();
+	$i = 0;
+
+	$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
+	$users_SQL = mysql_query("SELECT username FROM users");
+	$passes_SQL = mysql_query("SELECT password FROM users");
+
+	while ( $row = mysql_fetch_assoc($users_SQL) ) {
+
+	  $users[] = $row['username'];
+
+	}
+	while ( $row = mysql_fetch_assoc($passes_SQL) ) {
+
+	  $passes[] = $row['password'];
+
+	}
+		
+	mysqli_close($con);
+	$list = array_combine($users, $passes);
+	return $list;
+}
+
+?>
