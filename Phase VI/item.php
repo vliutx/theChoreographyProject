@@ -23,16 +23,16 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home.html">Home</a>
-        <a class="navbar-brand" href="#">About</a>
-        <a class="navbar-brand" href="contact.html">Contact</a>
+        <a class="navbar-brand" href="home.php">Home</a>
+        <a class="navbar-brand" href="about.php">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
 if (isset($_SESSION['user'])){
   print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-secondary'>Logout</button>";
 }
 else{
-  print "<a class='navbar-brand' href='login.html'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
+  print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
 }
 
 ?>
