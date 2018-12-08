@@ -17,6 +17,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
@@ -28,8 +30,10 @@
         <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
+session_start();
+
 if (isset($_SESSION['user'])){
-  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-primary'>Logout</button>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='logout.php' onclick='return log();'>Logout</a>";
 }
 else{
   print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";

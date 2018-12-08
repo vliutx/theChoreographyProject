@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if (!isset($_SESSION['user'])){
   header('Location: login.php');
   die();
@@ -28,6 +30,8 @@ if (!isset($_SESSION['user'])){
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
@@ -38,7 +42,7 @@ if (!isset($_SESSION['user'])){
         <a class="navbar-brand" href="about.php">About</a>
         <a class="navbar-brand" href="contact.php">Contact</a>
         <a class="navbar-brand" href="new.php">New Listing</a>
-        <a class="btn btn-primary" href="">Logout</a>
+        <a class="btn btn-primary" onclick="return log();" href="logout.php">Logout</a>
       </div>
     </nav>
 
@@ -149,6 +153,5 @@ if (!isset($_SESSION['user'])){
 
 <?php
 
-if isset($_POST[''])
 
 ?>

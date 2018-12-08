@@ -31,6 +31,8 @@
         <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
+session_start();
+
 if (isset($_SESSION['user'])){
   print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-secondary'>Logout</button>";
 }
@@ -44,72 +46,72 @@ else{
 
     <section class="call-to-action text-center text-white bg-light">
       <div class="overlay"></div>
-    	<div class="container">
-    		<div class="row no-gutters">
-	          <div class="col-lg-12 my-auto showcase-text">
-	            <h2>Advanced Search</h2>
-	            <br>
-	            <form>
-		            <div class="form-row" style="justify-content: center;">
-		              <div class="col-12 col-md-9 mb-2 mb-md-0">
-		                <input type="text" class="form-control form-control-lg" placeholder="Title" onmouseover="messages(0)" onmouseout="messages(4)">
-		              </div>
-		            </div>
-		            <br>
-		            <div class="form-row" style="justify-content: center;">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <select class="form-control form-control-lg" onmouseover="messages(1)" onmouseout="messages(4)">
-                      <option value="" disabled selected hidden>Genre</option>
-                      <option>Classical</option>
-                      <option>Country</option>
-                      <option>Electronic</option>
-                      <option>Hip-hop</option>
-                      <option>Pop</option>
-                      <option>Rock</option>
-                      <option>R&amp;B</option>
-                      <option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <br>
-		            <div class="form-row" style="justify-content: center;">
-	                  <div class="col-12 col-md-9 mb-2 mb-md-0">
-	                    <select class="form-control form-control-lg" onmouseover="messages(2)" onmouseout="messages(4)">
-	                      <option value="" disabled selected hidden>Style</option>
-	                      <option>Ballet</option>
-	                      <option>Ballroom</option>
-	                      <option>Contemporary</option>
-	                      <option>Ethnic</option>
-	                      <option>Mixed</option>
-	                      <option>Urban</option>
-	                      <option>Other</option>
-	                    </select>
-	                  </div>
-	                </div>
-	                <br>
-		            <div class="form-row" style="justify-content: center;">
-		              <div class="col-12 col-md-9 mb-2 mb-md-0">
-		                <input type="text" class="form-control form-control-lg" placeholder="Shared by" onmouseover="messages(3)" onmouseout="messages(4)">
-		              </div>
-		            </div>
-		            <br>
-		            <div class="form-row" style="justify-content: center;">
-		              <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
-		              <button type="reset" class="btn btn-secondary">Reset</button>
-		            </div>
-		        </form>
-		        <br><br>
-		        <div class="form-row" style="justify-content: center;">
-		          <div class="col-12 col-md-9 mb-2 mb-md-0">
-		            <input type="text" class="form-control form-control-lg" id="adviceBox" value="Hover over a text box for help" style="text-align:center;border:none;background:none;" readonly>
-		          </div>
-		        </div>
-	          </div>
+      <div class="container">
+    	<div class="row no-gutters">
+	      <div class="col-lg-12 my-auto showcase-text">
+	      <h2>Advanced Search</h2>
+	      <br>
+	      <form>
+		  <div class="form-row" style="justify-content: center;">
+		    <div class="col-12 col-md-9 mb-2 mb-md-0">
+		      <input type="text" class="form-control form-control-lg" placeholder="Title" onmouseover="messages(0)" onmouseout="messages(4)">
+		    </div>
+		  </div>
+		  <br>
+		  <div class="form-row" style="justify-content: center;">
+            <div class="col-12 col-md-9 mb-2 mb-md-0">
+              <select class="form-control form-control-lg" onmouseover="messages(1)" onmouseout="messages(4)">
+                <option value="" disabled selected hidden>Genre</option>
+                <option>Classical</option>
+                <option>Country</option>
+                <option>Electronic</option>
+                <option>Hip-hop</option>
+                <option>Pop</option>
+                <option>Rock</option>
+                <option>R&amp;B</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <br>
+		  <div class="form-row" style="justify-content: center;">
+	        <div class="col-12 col-md-9 mb-2 mb-md-0">
+	          <select class="form-control form-control-lg" onmouseover="messages(2)" onmouseout="messages(4)">
+	            <option value="" disabled selected hidden>Style</option>
+	            <option>Ballet</option>
+	            <option>Ballroom</option>
+	            <option>Contemporary</option>
+	            <option>Ethnic</option>
+	            <option>Mixed</option>
+	            <option>Urban</option>
+	            <option>Other</option>
+	          </select>
 	        </div>
 	      </div>
+	      <br>
+		  <div class="form-row" style="justify-content: center;">
+		    <div class="col-12 col-md-9 mb-2 mb-md-0">
+		      <input type="text" class="form-control form-control-lg" placeholder="Shared by" onmouseover="messages(3)" onmouseout="messages(4)">
+		    </div>
+		  </div>
+		  <br>
+		    <div class="form-row" style="justify-content: center;">
+		      <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
+		      <button type="reset" class="btn btn-secondary">Reset</button>
+		    </div>
+		  </form>
+		  <br><br>
+		  <div class="form-row" style="justify-content: center;">
+		    <div class="col-12 col-md-9 mb-2 mb-md-0">
+		      <input type="text" class="form-control form-control-lg text-white" id="adviceBox" value="Hover over a text box for help" style="text-align:center;border:none;background:none;" readonly>
+		    </div>
+		  </div>
+	      </div>
+	    </div>
+	  </div>
     </section>
 
-	  <!-- Call to Action -->
+	<!-- Call to Action -->
     <section class="call-to-action2 text-white text-center" style="height: 20px;">
       <div class="overlay"></div>
     </section>
