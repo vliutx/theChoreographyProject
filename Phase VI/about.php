@@ -29,10 +29,10 @@
 <?php
 
 if (isset($_SESSION['user'])){
-  print "<button class='btn btn-secondary'>Logout</button>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-secondary'>Logout</button>";
 }
 else{
-  print "<a class='navbar-brand' href='login.html'>Sign In</a><a class='btn btn-secondary' href='register.php'>Register</a>";
+  print "<a class='navbar-brand' href='login.html'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
 }
 
 ?>
