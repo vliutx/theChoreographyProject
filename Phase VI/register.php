@@ -20,7 +20,7 @@ print <<<HEADER
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
 	
-	<script type="text/javascript" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/tls3375/Phase%20V/register.js"></script>
+	<script type="text/javascript" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/tls3375/Phase%20VI/js/register.js"></script>
 </head>
 
 <body>
@@ -28,11 +28,11 @@ print <<<HEADER
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home.html">Home</a>
-        <a class="navbar-brand" href="about.html">About</a>
-        <a class="navbar-brand" href="contact.html">Contact</a>
-        <a class="btn btn-secondary" href="register.php">Register</a>
-        <a class="btn btn-primary" href="">Sign In</a>
+        <a class="navbar-brand" href="home.php">Home</a>
+        <a class="navbar-brand" href="about.php">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
+        <a class="btn btn-secondary" href="">Register</a>
+        <a class="btn btn-primary" href="login.php">Sign In</a>
       </div>
     </nav>
 HEADER;
@@ -88,8 +88,6 @@ if (isset($_POST['submit'])) {
 		// Load list of registered usernames and passwords
 		$list = loadUsers();
 		
-		echo "$list";
-		
 		// Verify that username is not taken
 		$found = FALSE;
 		foreach ($list as $regUser => $regPass) {
@@ -101,7 +99,7 @@ if (isset($_POST['submit'])) {
 		// If duplicate username is found, display error message
 		// Prompts registration form again
 		if ($found == TRUE) {
-			echo "alert('Username already registered, try again.')";
+			echo "<script>alert('Username already registered. Please try again.')</script>";
 		}
 		
 		// If username is available, append to list of users/passwords
@@ -113,13 +111,12 @@ if (isset($_POST['submit'])) {
 			$sql = "INSERT INTO users (username, password) VALUES ('$username','$password')";
 			mysqli_query($con, $sql);
 			mysqli_close($con);
-			echo "<script>
-			alert('Thank you! Your account has been registered.');
-			</script>";
+			echo "<script>alert('Thank you! Account successfully registered.')</script>";
 			
-			// Set cookie and redirect to home page
-			setcookie("user", $username);
-			header("Location: home.html");
+			// Start session and redirect to home page
+			session_start();
+			$_SESSION['user'] = $username;
+			header("Location: home.php");
 			die;
 		}
 	}
