@@ -15,11 +15,11 @@ if (!isset($_SESSION['user'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	<title>New Listing</title>
+	  <title>New Listing</title>
     
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
-	<!-- Bootstrap core CSS -->
+	  <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="css/all.min.css" rel="stylesheet">

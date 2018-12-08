@@ -31,7 +31,7 @@ if (isset($_SESSION['user'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-	<script type="text/javascript" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/tls3375/Phase%20VI/js/register.js"></script>
+	<script type="text/javascript" src="js/register.js"></script>
   </head>
 
   <body>

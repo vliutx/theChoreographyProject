@@ -6,7 +6,7 @@
 
 	  <title>Advanced Search</title>
 
-	<!-- Bootstrap core CSS -->
+	  <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="css/all.min.css" rel="stylesheet">
@@ -17,9 +17,9 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Dynamic HTML JS -->
+    <!-- Custom JS -->
     <script src="js/search.js"></script>
-
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
@@ -34,8 +34,7 @@
 session_start();
 
 if (isset($_SESSION['user'])){
-  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-secondary'>Logout</button>";
-}
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='logout.php' onclick='return log();'>Logout</a>";}
 else{
   print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
 }

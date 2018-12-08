@@ -6,6 +6,8 @@
 
 	  <title>Contact Us</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
 	  <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
