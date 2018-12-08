@@ -19,6 +19,8 @@ print <<<HEADER
 
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
+	
+	<script type="text/javascript" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/tls3375/Phase%20V/register.js"></script>
 </head>
 
 <body>
@@ -35,62 +37,6 @@ print <<<HEADER
     </nav>
 HEADER;
 
-if (isset($_POST['submit'])){
-	
-	// <script type="text/javascript" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/tls3375/Phase%20V/register.js"></script>
-	// $invalid = $_GET["invalid"];
-	
-	// if ($invalid == 0) {
-		
-		// if (isset($_POST["user"]) && isset($_POST["pass"])) {
-		
-		// // Get values submitted from the login form
-		// $username = $_POST["user"];
-		// $password = $_POST["pass"];
-		
-		// // Load list of registered usernames and passwords
-		// $list = loadUsers();
-		
-		// // Verify that username is not taken
-		// $found = FALSE;
-		// foreach ($list as $regUser => $regPass) {
-			// if ($username == $regUser) {
-				// $found = TRUE;
-			// }
-		// }
-		
-		// // If duplicate username is found, display error message
-		// // Prompts registration form again
-		// if ($found == TRUE) {
-			// echo "<p>Username already registered, try again.</p>";
-		// }
-		
-		// // If username is available, append to list of users/passwords
-		// // Redirects back to home page
-		// else {
-			
-			// // add new user/pass combo to SQL database
-			// $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
-			// $sql = "INSERT INTO users (username, password) VALUES ('username','$password')";
-			// mysqli_query($con, $sql);
-			// mysqli_close($con);
-			// echo "<script>
-			// alert('Thank you, 1 student record added.');
-			// </script>";
-			
-			// // Set cookie and redirect to home page
-			// setcookie("user", $username);
-			// header("Location: home.html");
-			// die;
-	// }
-	
-// }
-	// }
-	// else {
-		// echo "<p>Invalid input. Please check rules and try again.</p>";
-	// }
-}
-
 print <<<FORM
     <section class="call-to-action text-white text-center">
       <div class="overlay"></div>
@@ -100,25 +46,25 @@ print <<<FORM
             <h2 class="mb-4">Register a New Account</h2>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form>
+            <form method="post" action="register.php" onsubmit="return validate()">
 				<div class="form-row">
 					<div class="col-12 col-md-9 mb-2 mb-md-0">
-					  <input type="text" class="form-control form-control-lg" id="user" placeholder="Enter a username">
+					  <input type="text" class="form-control form-control-lg" id="user" name="user" placeholder="Enter a username">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col-12 col-md-9 mb-2 mb-md-0">
-					  <input type="password" class="form-control form-control-lg" id="pass" placeholder="Enter a password">
+					  <input type="password" class="form-control form-control-lg" id="pass" name="pass" placeholder="Enter a password">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col-12 col-md-9 mb-2 mb-md-0">
-					  <input type="password" class="form-control form-control-lg" id="pass2" placeholder="Re-enter your password">
+					  <input type="password" class="form-control form-control-lg" id="pass2" name="pass2" placeholder="Re-enter your password">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col-12 col-md-3">
-					  <button type="submit" class="btn btn-block btn-lg btn-primary">Register</button>
+					  <button type="submit" id="submit" name="submit" class="btn btn-block btn-lg btn-primary">Register</button>
 					</div>
 				</div>
             </form>
@@ -126,27 +72,79 @@ print <<<FORM
         </div>
       </div>
     </section>
+	</div>
+FORM;
 	
-</div>
+if (isset($_POST['submit'])) {
+	
+	
+	if (isset($_POST["user"]) && isset($_POST["pass"]) && isset($_POST["pass2"])) {	
+
+
+		// Get values submitted from the login form
+		$username = $_POST["user"];
+		$password = $_POST["pass"];
+		
+		// Load list of registered usernames and passwords
+		$list = loadUsers();
+		
+		echo "$list";
+		
+		// Verify that username is not taken
+		$found = FALSE;
+		foreach ($list as $regUser => $regPass) {
+			if ($username == $regUser) {
+				$found = TRUE;
+			}
+		}
+		
+		// If duplicate username is found, display error message
+		// Prompts registration form again
+		if ($found == TRUE) {
+			echo "alert('Username already registered, try again.')";
+		}
+		
+		// If username is available, append to list of users/passwords
+		// Redirects back to home page
+		else {
+			
+			// add new user/pass combo to SQL database
+			$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
+			$sql = "INSERT INTO users (username, password) VALUES ('$username','$password')";
+			mysqli_query($con, $sql);
+			mysqli_close($con);
+			echo "<script>
+			alert('Thank you! Your account has been registered.');
+			</script>";
+			
+			// Set cookie and redirect to home page
+			setcookie("user", $username);
+			header("Location: home.html");
+			die;
+		}
+	}
+}
+
+print <<<FOOTER
 </body>
 </html>
-FORM;
+FOOTER;
+
 
 function loadUsers() {
-	$users = array();
-	$passes = array();
-	$i = 0;
+	$users = Array();
+	$passes = Array();
 
 	$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
-	$users_SQL = mysql_query("SELECT username FROM users");
-	$passes_SQL = mysql_query("SELECT password FROM users");
+	$users_SQL = mysqli_query($con, "SELECT username FROM users");
+	$passes_SQL = mysqli_query($con, "SELECT password FROM users");
 
-	while ( $row = mysql_fetch_assoc($users_SQL) ) {
+	while ( $row = mysqli_fetch_assoc($users_SQL) ) {
 
 	  $users[] = $row['username'];
 
 	}
-	while ( $row = mysql_fetch_assoc($passes_SQL) ) {
+	while ( $row = mysqli_fetch_assoc($passes_SQL) ) {
 
 	  $passes[] = $row['password'];
 
