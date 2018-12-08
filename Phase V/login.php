@@ -15,7 +15,7 @@ if (isset($_SESSION['user'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	<title>Registration Page</title>
+	<title>Log In</title>
     
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
@@ -27,11 +27,9 @@ if (isset($_SESSION['user'])){
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
-	<!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-	<script type="text/javascript" src="js/register.js"></script>
   </head>
 
   <body>
@@ -41,54 +39,49 @@ if (isset($_SESSION['user'])){
         <a class="navbar-brand" href="home.php">Home</a>
         <a class="navbar-brand" href="about.php">About</a>
         <a class="navbar-brand" href="contact.php">Contact</a>
-        <a class="navbar-brand" href="login.php">Sign In</a>
-        <a class="btn btn-primary" href="">Register</a>
+        <a class="navbar-brand" href="">Sign In</a>
+        <a class="btn btn-primary" href="register.php">Register</a>
       </div>
     </nav>
 
     <!-- Form -->
-    <section class="call-to-action text-center text-white bg-light">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-lg-12 my-auto showcase-text">
-            <h2>Register a New Account</h2>
-            <br>
-	        <form method="post" action="register.php" onsubmit="return validate()">
+	<section class="call-to-action text-center text-white bg-light">
+	  <div class="overlay"></div>
+	  <div class="container">
+		<div class="row no-gutters">
+		  <div class="col-lg-12 my-auto showcase-text">
+			<h2>Sign in to your Account</h2>
+			<br>
+			<form method="post" action="login.php">
 			  <div class="form-row" style="justify-content: center;">
 				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <input type="text" class="form-control form-control-lg" id="user" name="user" placeholder="Username">
+				  <input type="text" name="user" class="form-control form-control-lg" placeholder="Username">
 				</div>
 			  </div>
 			  <br>
 			  <div class="form-row" style="justify-content: center;">
 				<div class="col-12 col-md-9 mb-2 mb-md-0">
-			      <input type="password" class="form-control form-control-lg" id="pass" name="pass" placeholder="Password">
+				  <input type="password" name="pass" class="form-control form-control-lg" placeholder="Password">
 				</div>
 			  </div>
 			  <br>
 			  <div class="form-row" style="justify-content: center;">
 				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <input type="password" class="form-control form-control-lg" id="pass2" name="pass2" placeholder="Re-enter Password">
+				  <button type="submit" id="submit" name="submit" class="btn btn-block btn-lg btn-primary">Login</button>
 				</div>
 			  </div>
-			  <br>
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <button type="submit" id="submit" name="submit" class="btn btn-block btn-lg btn-primary">Register</button>
-				</div>
-			  </div>
-	        </form>
-          </div>
-        </div>
-      </div>
-    </section>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	</section>
+		
+	<!-- Call to Action -->
+	<section class="call-to-action2 text-white text-center" style="height: 20px;">
+	  <div class="overlay"></div>
+	</section>
 
-    <section class="call-to-action2 text-white text-center" style="height: 20px;">
-      <div class="overlay"></div>
-    </section>
-
-    <!-- Footer -->
+	<!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
@@ -125,7 +118,7 @@ if (isset($_SESSION['user'])){
 if (isset($_POST['submit'])) {
 	
 	
-	if (isset($_POST["user"]) && isset($_POST["pass"]) && isset($_POST["pass2"])) {	
+	if (isset($_POST["user"]) && isset($_POST["pass"])) {	
 
 
 		// Get values submitted from the login form
@@ -135,37 +128,38 @@ if (isset($_POST['submit'])) {
 		// Load list of registered usernames and passwords
 		$list = loadUsers();
 		
-		// Verify that username is not taken
+		// Verify that username and password are valid
 		$found = FALSE;
 		foreach ($list as $regUser => $regPass) {
+		
+			// Verify that username exists
 			if ($username == $regUser) {
 				$found = TRUE;
+				
+				// Verify that password is correct
+				// If password is correct, start session and redirect to home page
+				if ($password == $regPass) {
+					echo "<script>alert('Thank you! Login successful.')</script>";
+					session_start();
+					$_SESSION['user'] = $username;
+					header("Location: home.php");
+					die;
+				}
+				
+				// If password is incorrect, display error message
+				// Prompts login form again
+				else {
+					echo "<script>alert('Incorrect password. Please try again.')</script>";
+				}
 			}
 		}
 		
-		// If duplicate username is found, display error message
-		// Prompts registration form again
-		if ($found == TRUE) {
-			echo "<script>alert('Username already registered. Please try again.')</script>";
+		// If username does not exist, display error message
+		// Prompts login form again
+		if (!$found) {
+			echo "<script>alert('Username does not exist. Please try again.')</script>";
 		}
-		
-		// If username is available, append to list of users/passwords
-		// Redirects back to home page
-		else {
-			
-			// add new user/pass combo to SQL database
-			$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
-			$sql = "INSERT INTO users (username, password) VALUES ('$username','$password')";
-			mysqli_query($con, $sql);
-			mysqli_close($con);
-			echo "<script>alert('Thank you! Account successfully registered.')</script>";
-			
-			// Start session and redirect to home page
-			session_start();
-			$_SESSION['user'] = $username;
-			header("Location: home.php");
-			die;
-		}
+
 	}
 }
 
