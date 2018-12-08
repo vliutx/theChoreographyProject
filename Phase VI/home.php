@@ -63,7 +63,7 @@ else{
           </div>
         </div>
         <div class="col-xl-9 mx-auto">
-            <br><a href="search.html" style="color:white;text-decoration:none;">Advanced Search</a>
+            <br><a href="search.php" style="color:white;text-decoration:none;">Advanced Search</a>
         </div>
       </div>
     </header>

@@ -42,7 +42,8 @@ else{
       </div>
     </nav>
 
-    <section class="testimonials text-center bg-light">
+    <section class="call-to-action text-center text-white bg-light">
+      <div class="overlay"></div>
     	<div class="container">
     		<div class="row no-gutters">
 	          <div class="col-lg-12 my-auto showcase-text">
@@ -108,8 +109,8 @@ else{
 	      </div>
     </section>
 
-	<!-- Call to Action -->
-    <section class="call-to-action text-white text-center" style="height: 20px;">
+	  <!-- Call to Action -->
+    <section class="call-to-action2 text-white text-center" style="height: 20px;">
       <div class="overlay"></div>
     </section>
 
