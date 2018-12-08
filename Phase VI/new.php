@@ -34,10 +34,11 @@ if (!isset($_SESSION['user'])){
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home.html">Home</a>
-        <a class="navbar-brand" href="about.html">About</a>
-        <a class="navbar-brand" href="contact.html">Contact</a>
-        <a class="btn btn-secondary" href="">Logout</a>
+        <a class="navbar-brand" href="home.php">Home</a>
+        <a class="navbar-brand" href="about.php">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
+        <a class="navbar-brand" href="new.php">New Listing</a>
+        <a class="btn btn-primary" href="">Logout</a>
       </div>
     </nav>
 
@@ -49,7 +50,7 @@ if (!isset($_SESSION['user'])){
           <div class="col-lg-12 my-auto showcase-text">
             <h2>New Listing</h2>
             <br>
-            <form>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
                   <input type="text" class="form-control form-control-lg" placeholder="Youtube ID" required>
@@ -122,11 +123,11 @@ if (!isset($_SESSION['user'])){
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
-                <a href="about.html">About</a>
+                <a href="about.php">About</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="contact.html">Contact</a>
+                <a href="contact.php">Contact</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
@@ -145,3 +146,9 @@ if (!isset($_SESSION['user'])){
     </footer>
   </body>
 </html>
+
+<?php
+
+if isset($_POST[''])
+
+?>

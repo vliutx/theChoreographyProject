@@ -23,11 +23,19 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Home</a>
-        <a class="navbar-brand" href="about.html">About</a>
-        <a class="navbar-brand" href="contact.html">Contact</a>
-        <a class="btn btn-secondary" href="register.html">Register</a>
-        <a class="btn btn-primary" href="login.html">Sign In</a>
+        <a class="navbar-brand" href="home.php">Home</a>
+        <a class="navbar-brand" href="about.php">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
+<?php
+
+if (isset($_SESSION['user'])){
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-primary'>Logout</button>";
+}
+else{
+  print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
+}
+
+?>
       </div>
     </nav>
 

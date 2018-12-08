@@ -23,16 +23,16 @@
   	<!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home.html">Home</a>
-        <a class="navbar-brand" href="#">About</a>
-        <a class="navbar-brand" href="contact.html">Contact</a>
+        <a class="navbar-brand" href="home.php">Home</a>
+        <a class="navbar-brand" href="">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
 if (isset($_SESSION['user'])){
-  print "<button class='btn btn-secondary'>Logout</button>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-primary'>Logout</button>";
 }
 else{
-  print "<a class='navbar-brand' href='login.html'>Sign In</a><a class='btn btn-secondary' href='register.php'>Register</a>";
+  print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
 }
 
 ?>
@@ -95,11 +95,11 @@ else{
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
-                <a href="about.html">About</a>
+                <a href="about.php">About</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="contact.html">Contact</a>
+                <a href="contact.php">Contact</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
