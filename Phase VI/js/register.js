@@ -1,17 +1,14 @@
-document.getElementById("credentials").submit.onclick = validate;
-
-function validate () {
+function validate() {
 	var userVal = document.getElementById("user").value;
 	var pass = document.getElementById("pass").value;
 	var pass2 = document.getElementById("pass2").value;
 	var userValid = checkUser(userVal);
 	var passValid = checkPass(pass, pass2);
 	if (!userValid || !passValid){
-		window.location.href="register.php?invalid=1";
+		alert("Invalid credentials. Check rules and try again");
+		return false;
 	}
-	else {
-		window.location.href="register.php?invalid=0";
-	}
+	return true;
 }
 
 function checkUser(userVal) {
