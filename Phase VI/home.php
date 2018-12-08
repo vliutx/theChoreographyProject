@@ -31,7 +31,7 @@
 <?php
 
 if (isset($_SESSION['user'])){
-  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-secondary'>Logout</button>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-primary'>Logout</button>";
 }
 else{
   print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";

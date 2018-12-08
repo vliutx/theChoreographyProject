@@ -38,7 +38,7 @@ if (!isset($_SESSION['user'])){
         <a class="navbar-brand" href="about.php">About</a>
         <a class="navbar-brand" href="contact.php">Contact</a>
         <a class="navbar-brand" href="new.php">New Listing</a>
-        <a class="btn btn-secondary" href="">Logout</a>
+        <a class="btn btn-primary" href="">Logout</a>
       </div>
     </nav>
 
@@ -50,7 +50,7 @@ if (!isset($_SESSION['user'])){
           <div class="col-lg-12 my-auto showcase-text">
             <h2>New Listing</h2>
             <br>
-            <form>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
                   <input type="text" class="form-control form-control-lg" placeholder="Youtube ID" required>
@@ -146,3 +146,9 @@ if (!isset($_SESSION['user'])){
     </footer>
   </body>
 </html>
+
+<?php
+
+if isset($_POST[''])
+
+?>
