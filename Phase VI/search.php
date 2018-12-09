@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Advanced Search</title>
+	  <title>Advanced Search</title>
 
-	<!-- Favicon -->
+	  <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
-	<!-- Bootstrap core CSS -->
+	  <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="css/all.min.css" rel="stylesheet">
@@ -49,71 +49,72 @@ else{
     <section class="call-to-action text-center text-white bg-light">
       <div class="overlay"></div>
       <div class="container">
-    	<div class="row no-gutters">
-	      <div class="col-lg-12 my-auto showcase-text">
-	      <h2>Advanced Search</h2>
-	      <br>
-	      <form name="myForm" action="php/query.php" method="post" onsubmit="return valid()">
-		  <div class="form-row" style="justify-content: center;">
-		    <div class="col-12 col-md-9 mb-2 mb-md-0">
-		      <input type="text" class="form-control form-control-lg" placeholder="Title" name="title" onmouseover="messages(0)" onmouseout="messages(4)">
-		    </div>
-		  </div>
-		  <br>
-		  <div class="form-row" style="justify-content: center;">
-            <div class="col-12 col-md-9 mb-2 mb-md-0">
-              <select class="form-control form-control-lg" name="genre" onmouseover="messages(1)" onmouseout="messages(4)">
-                <option value="" disabled selected hidden>Genre</option>
-                <option>Classical</option>
-                <option>Country</option>
-                <option>Electronic</option>
-                <option>Hip-hop</option>
-                <option>Pop</option>
-                <option>Rock</option>
-                <option>R&amp;B</option>
-                <option>Other</option>
-              </select>
+      	<div class="row no-gutters">
+  	      <div class="col-lg-12 my-auto showcase-text">
+  	      <h2>Advanced Search</h2>
+  	      <br>
+  	      <form name="myForm" action="result.php" method="GET" onsubmit="return valid()">
+      		  <div class="form-row" style="justify-content: center;">
+      		    <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <input type="hidden" name="set" value="true" />
+      		      <input type="text" class="form-control form-control-lg" placeholder="Title" name="title" onmouseover="messages(0)" onmouseout="messages(4)">
+      		    </div>
+      		  </div>
+      		  <br>
+      		  <div class="form-row" style="justify-content: center;">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <select class="form-control form-control-lg" name="genre" onmouseover="messages(1)" onmouseout="messages(4)">
+                  <option value="" disabled selected hidden>Genre</option>
+                  <option value="Classical">Classical</option>
+                  <option value="Country">Country</option>
+                  <option value="Electronic">Electronic</option>
+                  <option value="Hip-hop">Hip-hop</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Rock">Rock</option>
+                  <option value="R&amp;B">R&amp;B</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <br>
-		  <div class="form-row" style="justify-content: center;">
-	        <div class="col-12 col-md-9 mb-2 mb-md-0">
-	          <select class="form-control form-control-lg" name="style" onmouseover="messages(2)" onmouseout="messages(4)">
-	            <option value="" disabled selected hidden>Style</option>
-	            <option>Ballet</option>
-	            <option>Ballroom</option>
-	            <option>Contemporary</option>
-	            <option>Ethnic</option>
-	            <option>Mixed</option>
-	            <option>Urban</option>
-	            <option>Other</option>
-	          </select>
-	        </div>
-	      </div>
-	      <br>
-		  <div class="form-row" style="justify-content: center;">
-		    <div class="col-12 col-md-9 mb-2 mb-md-0">
-		      <input type="text" class="form-control form-control-lg" name="author" placeholder="Shared by" onmouseover="messages(3)" onmouseout="messages(4)">
-		    </div>
-		  </div>
-		  <br>
-		    <div class="form-row" style="justify-content: center;">
-		      <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
-		      <button type="reset" class="btn btn-secondary">Reset</button>
-		    </div>
-		  </form>
-		  <br><br>
-		  <div class="form-row" style="justify-content: center;">
-		    <div class="col-12 col-md-9 mb-2 mb-md-0">
-		      <input type="text" class="form-control form-control-lg text-white" id="adviceBox" value="Hover over a text box for help" style="text-align:center;border:none;background:none;" readonly>
-		    </div>
-		  </div>
+            <br>
+      		  <div class="form-row" style="justify-content: center;">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+      	        <select class="form-control form-control-lg" name="style" onmouseover="messages(2)" onmouseout="messages(4)">
+      	          <option value="" disabled selected hidden>Style</option>
+      	          <option value="Ballet">Ballet</option>
+      	          <option value="Ballroom">Ballroom</option>
+      	          <option value="Contemporary">Contemporary</option>
+      	          <option value="Ethnic">Ethnic</option>
+      	          <option value="Mixed">Mixed</option>
+      	          <option value="Urban">Urban</option>
+      	          <option value="Other">Other</option>
+      	        </select>
+      	      </div>
+      	    </div>
+      	    <br>
+      		  <div class="form-row" style="justify-content: center;">
+      		    <div class="col-12 col-md-9 mb-2 mb-md-0">
+      		      <input type="text" class="form-control form-control-lg" name="author" placeholder="Shared by" onmouseover="messages(3)" onmouseout="messages(4)">
+      		    </div>
+      		  </div>
+      		  <br>
+      		  <div class="form-row" style="justify-content: center;">
+      		    <button type="submit" class="btn btn-lg btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
+      		    <button type="reset" class="btn btn-lg btn-secondary">Reset</button>
+      		  </div>
+      		</form>
+  		    <br><br>
+  		    <div class="form-row" style="justify-content: center;">
+  		      <div class="col-12 col-md-9 mb-2 mb-md-0">
+  		        <input type="text" class="form-control form-control-lg text-white" id="adviceBox" value="Hover over a text box for help" style="text-align:center;border:none;background:none;" readonly>
+  		      </div>
+  		    </div>
+  	      </div>
 	      </div>
 	    </div>
-	  </div>
     </section>
 
-	<!-- Call to Action -->
+	  <!-- Call to Action -->
     <section class="call-to-action2 text-white text-center" style="height: 20px;">
       <div class="overlay"></div>
     </section>
