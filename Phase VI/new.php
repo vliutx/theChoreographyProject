@@ -31,6 +31,7 @@ if (!isset($_SESSION['user'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
+    <script type="text/javascript" src="js/list.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
@@ -54,53 +55,53 @@ if (!isset($_SESSION['user'])){
           <div class="col-lg-12 my-auto showcase-text">
             <h2>New Listing</h2>
             <br>
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="ifexists(event);">
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="Youtube ID" required>
+                  <input type="text" id="id" class="form-control form-control-lg" placeholder="Youtube ID" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="Title" required>
+                  <input type="text" id="title" class="form-control form-control-lg" placeholder="Title" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <select class="form-control form-control-lg" required>
+                  <select class="form-control form-control-lg" id="genre" required>
                       <option value="" disabled selected hidden>Genre</option>
-                      <option>Classical</option>
-                      <option>Country</option>
-                      <option>Electronic</option>
-                      <option>Hip-hop</option>
-                      <option>Pop</option>
-                      <option>Rock</option>
-                      <option>R&amp;B</option>
-                      <option>Other</option>
+                      <option value="Classical">Classical</option>
+                      <option value="Country">Country</option>
+                      <option value="Electronic">Electronic</option>
+                      <option value="Hip-hop">Hip-hop</option>
+                      <option value="Pop">Pop</option>
+                      <option value="Rock">Rock</option>
+                      <option value="R&amp;B">R&amp;B</option>
+                      <option value="Other">Other</option>
                   </select>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <select class="form-control form-control-lg" required>
+                  <select class="form-control form-control-lg" id="style" required>
                       <option value="" disabled selected hidden>Style</option>
-                      <option>Ballet</option>
-                      <option>Ballroom</option>
-                      <option>Contemporary</option>
-                      <option>Ethnic</option>
-                      <option>Mixed</option>
-                      <option>Urban</option>
-                      <option>Other</option>
+                      <option value="Ballet">Ballet</option>
+                      <option value="Ballroom">Ballroom</option>
+                      <option value="Contemporary">Contemporary</option>
+                      <option value="Ethnic">Ethnic</option>
+                      <option value="Mixed">Mixed</option>
+                      <option value="Urban">Urban</option>
+                      <option value="Other">Other</option>
                   </select>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <textarea class="form-control form-control-lg" rows="3" placeholder="Brief Description"></textarea>
+                  <textarea class="form-control form-control-lg" rows="3" placeholder="Brief Description" id="descrip"></textarea>
                 </div>
               </div>
               <br>
@@ -152,6 +153,5 @@ if (!isset($_SESSION['user'])){
 </html>
 
 <?php
-
 
 ?>

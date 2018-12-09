@@ -1,3 +1,15 @@
+<?php 
+
+$id = $_GET['id'];
+
+$list = get_listed_videos();
+if (!in_array($id, $list)){
+  echo "404: Video could not be found.";
+  die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,19 +61,73 @@ else{
     <section class="showcase">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
-          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('https://www.youtube.com/watch?v=HVR3h12LOkA');"></div>
-          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-            <h2>Community</h2>
-            <p class="lead mb-0">As a community of dancers, we are constantly growing and seeking inspiration from others. Our choreography library offers a resource that satisfies this need, as well as creates an online community through which dancers can interact with and learn with.</p>
-          </div>
-          
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-2.jpg');"></div>
+          <div class="col-lg-6 showcase-img"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo $id; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
           <div class="col-lg-6 my-auto showcase-text">
-            <h2>Share &amp; Search for Videos</h2>
-            <p class="lead mb-0">Trying to find inspiration? Look no further! Iajsiofjaiosfjiaosfjioasjfioajsfo this is just filler text and I don't know what we're doing.</p>
-          </div>
+<?php 
+
+$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
+$query = mysqli_query($con, "SELECT * FROM TCP WHERE ID='$id'");
+while ($deets = $query->fetch_row()){
+  print "<h2>".$deets[3]."</h2>";
+  print "<p class='lead mb-0'>Posted by: ".$deets[2]."<br>Genre: ".$deets[4]."<br>Style: ".$deets[5]."<br>".$deets[6]."</p>";
+}
+mysqli_close($con);
+
+?>
+          </div> 
         </div>
       </div>
     </section>
+
+    <!-- Call to Action -->
+    <section class="call-to-action2 text-white text-center" style="height: 20px;">
+      <div class="overlay"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="about.php">About</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="contact.php">Contact</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+            </ul>
+            <br>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; TCP 2018. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<?php
+
+function get_listed_videos(){
+  $videos = array();
+
+  $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
+  $ids = mysqli_query($con, "SELECT ID FROM TCP");
+
+  while ($row = mysqli_fetch_assoc($ids)){
+    $videos[] = $row['ID'];
+  }
+  mysqli_close($con);
+  return $videos;
+}
+
+?>

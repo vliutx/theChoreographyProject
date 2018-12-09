@@ -1,10 +1,8 @@
 <?php
 
-session_start();
-
-if (isset($_SESSION['user'])){
-	header('Location: home.php');
-	die();
+if (!isset($_GET['set'])){
+    echo "404: Page not found.";
+    die();
 }
 
 ?>
@@ -14,12 +12,12 @@ if (isset($_SESSION['user'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-	<title>Registration Page</title>
-    
+
+    <title>Results</title>
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
-	<!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="css/all.min.css" rel="stylesheet">
@@ -27,11 +25,11 @@ if (isset($_SESSION['user'])){
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
-	<!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-	<script type="text/javascript" src="js/process.js"></script>
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
@@ -39,57 +37,59 @@ if (isset($_SESSION['user'])){
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
-        <a class="navbar-brand" href="about.php">About</a>
+        <a class="navbar-brand" href="">About</a>
         <a class="navbar-brand" href="contact.php">Contact</a>
-        <a class="navbar-brand" href="login.php">Sign In</a>
-        <a class="btn btn-primary" href="">Register</a>
+<?php
+
+session_start();
+
+if (isset($_SESSION['user'])){
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='logout.php' onclick='return log();'>Logout</a>";
+}
+else{
+  print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
+}
+
+?>
       </div>
     </nav>
 
-    <!-- Form -->
-    <section class="call-to-action text-center text-white bg-light">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-lg-12 my-auto showcase-text">
-            <h2>Register a New Account</h2>
-            <br>
-	        <form method="post" action="register.php" onsubmit="callServer2(event);">
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <input type="text" class="form-control form-control-lg" id="user" name="user" placeholder="Username">
-				</div>
-			  </div>
-			  <br>
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-			      <input type="password" class="form-control form-control-lg" id="pass" name="pass" placeholder="Password">
-				</div>
-			  </div>
-			  <br>
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <input type="password" class="form-control form-control-lg" id="pass2" name="pass2" placeholder="Re-enter Password">
-				</div>
-			  </div>
-			  <br>
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <button type="submit" id="submit" name="submit" class="btn btn-block btn-lg btn-primary">Register</button>
-				</div>
-			  </div>
-	        </form>
-          </div>
-        </div>
+    <!-- Image Showcases -->
+    <section class="showcase">
+      <div class="container-fluid p-0">
+<?php
+
+$style = $_GET['style'];
+$side = "left";
+
+$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
+$query = mysqli_query($con, "SELECT * FROM TCP WHERE Style='$style' ORDER BY Time DESC");
+while ($deets = $query->fetch_row()){
+    if ($side == "left"){
+        print "<a href='item.php?id=$deets[0]'><div class='row no-gutters'><div class='col-lg-6 order-lg-2 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
+        print "<div class='col-lg-6 order-lg-1 my-auto showcase-text'><h2>$deets[3]</h2>";
+        print "<p class='lead mb-0'>Genre: $deets[4]<br>Style: $deets[5]</p></div></div></a>";
+        $side = "right";
+    }
+    else{
+        print "<a href='item.php?id=$deets[0]'><div class='row no-gutters'><div class='col-lg-6 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
+        print "<div class='col-lg-6 my-auto showcase-text'><h2>$deets[3]</h2>";
+        print "<p class='lead mb-0'>Genre: $deets[4]<br>Style: $deets[5]</p></div></div></a>";
+        $side = "left";
+    }
+}
+mysqli_close($con);
+
+?>
       </div>
     </section>
 
     <!-- Call to Action -->
-  	<section class="call-to-action2 text-white text-center" style="height: 20px;">
-  	  <div class="overlay"></div>
-  	</section>
+    <section class="call-to-action text-white text-center" style="height: 20px;">
+      <div class="overlay"></div>
+    </section>
 
-	  <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">

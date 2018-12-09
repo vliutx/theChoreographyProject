@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	  <title>Advanced Search</title>
+	<title>Advanced Search</title>
 
-	  <!-- Bootstrap core CSS -->
+	<!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+	<!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="css/all.min.css" rel="stylesheet">
@@ -43,6 +45,7 @@ else{
       </div>
     </nav>
 
+    <!-- Form -->
     <section class="call-to-action text-center text-white bg-light">
       <div class="overlay"></div>
       <div class="container">
@@ -50,16 +53,16 @@ else{
 	      <div class="col-lg-12 my-auto showcase-text">
 	      <h2>Advanced Search</h2>
 	      <br>
-	      <form>
+	      <form name="myForm" action="php/query.php" method="post" onsubmit="return valid()">
 		  <div class="form-row" style="justify-content: center;">
 		    <div class="col-12 col-md-9 mb-2 mb-md-0">
-		      <input type="text" class="form-control form-control-lg" placeholder="Title" onmouseover="messages(0)" onmouseout="messages(4)">
+		      <input type="text" class="form-control form-control-lg" placeholder="Title" name="title" onmouseover="messages(0)" onmouseout="messages(4)">
 		    </div>
 		  </div>
 		  <br>
 		  <div class="form-row" style="justify-content: center;">
             <div class="col-12 col-md-9 mb-2 mb-md-0">
-              <select class="form-control form-control-lg" onmouseover="messages(1)" onmouseout="messages(4)">
+              <select class="form-control form-control-lg" name="genre" onmouseover="messages(1)" onmouseout="messages(4)">
                 <option value="" disabled selected hidden>Genre</option>
                 <option>Classical</option>
                 <option>Country</option>
@@ -75,7 +78,7 @@ else{
           <br>
 		  <div class="form-row" style="justify-content: center;">
 	        <div class="col-12 col-md-9 mb-2 mb-md-0">
-	          <select class="form-control form-control-lg" onmouseover="messages(2)" onmouseout="messages(4)">
+	          <select class="form-control form-control-lg" name="style" onmouseover="messages(2)" onmouseout="messages(4)">
 	            <option value="" disabled selected hidden>Style</option>
 	            <option>Ballet</option>
 	            <option>Ballroom</option>
@@ -90,7 +93,7 @@ else{
 	      <br>
 		  <div class="form-row" style="justify-content: center;">
 		    <div class="col-12 col-md-9 mb-2 mb-md-0">
-		      <input type="text" class="form-control form-control-lg" placeholder="Shared by" onmouseover="messages(3)" onmouseout="messages(4)">
+		      <input type="text" class="form-control form-control-lg" name="author" placeholder="Shared by" onmouseover="messages(3)" onmouseout="messages(4)">
 		    </div>
 		  </div>
 		  <br>
