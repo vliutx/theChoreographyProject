@@ -35,7 +35,7 @@
 session_start();
 
 if (isset($_SESSION['user'])){
-  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='logout.php' onclick='return log();'>Logout</a>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='php/logout.php' onclick='return log();'>Logout</a>";
 }
 else{
   print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
@@ -48,36 +48,36 @@ else{
     <!-- Image Showcases -->
     <section class="showcase">
       <div class="container-fluid p-0">
+      	<div class="row no-gutters">
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
+            <h2>Where do y'all get all of your listings?</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
+            <p class="lead mb-0">Our online choreography library is entirely made up of user submissions!</p>
+          </div>
+        </div>
         <div class="row no-gutters">
-          <div class="col-lg-6 my-auto showcase-text">
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
             <h2>What is a Youtube ID?</h2>
           </div>
-          <div class="col-lg-6 my-auto showcase-text">
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
             <p class="lead mb-0">A Youtube ID is a unique, 11 character identifier given to every video on Youtube, usually following "watch?v=" in the URL. This ID only contains alphanumeric characters and the "-" and "_" characters.</p>
           </div>
         </div>
         <div class="row no-gutters">
-          <div class="col-lg-6 my-auto showcase-text">
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
             <h2>Why is my video unavailable when I click play?</h2>
           </div>
-          <div class="col-lg-6 my-auto showcase-text">
-            <p class="lead mb-0">This could be caused by a variety of reasons. When videos are uploaded to youtube, there is an option to disable embed playback. additionally, some content is copyrighted and can only be played back on the Youtube website.</p>
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
+            <p class="lead mb-0">This could be caused by a variety of reasons. When videos are uploaded to youtube, there is an option to disable embed playback. Additionally, some content is copyrighted and can only be played back on the Youtube website.</p>
           </div>
         </div>
         <div class="row no-gutters">
-          <div class="col-lg-6 my-auto showcase-text">
-            <h2>YUHHHHH</h2>
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
+            <h2>I accidentally listed something wrong, what can I do?</h2>
           </div>
-          <div class="col-lg-6 my-auto showcase-text">
-            <p class="lead mb-0">Our online choreography library would allow for easy browsing by end users whose goals may range from finding videos that match their preferred dance styles to branching out to unknown styles. As dancers who are constantly growing, we understand the desire to seek inspiration for future dance performances and projects. Our choreography library would offer a resource that satisfies this need, as well as create an online community through which dancers can learn from each other.</p>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6 my-auto showcase-text">
-            <h2>YUHHHHH</h2>
-          </div>
-          <div class="col-lg-6 my-auto showcase-text">
-            <p class="lead mb-0">Our online choreography library would allow for easy browsing by end users whose goals may range from finding videos that match their preferred dance styles to branching out to unknown styles. As dancers who are constantly growing, we understand the desire to seek inspiration for future dance performances and projects. Our choreography library would offer a resource that satisfies this need, as well as create an online community through which dancers can learn from each other.</p>
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
+            <p class="lead mb-0">We currently don't have an update or delete feature on the website, but send us an e-mail through our contact page! Let us know what's up and we'll do what we can.</p>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ else{
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <div class="col-lg-12 h-100 text-center text-lg-center my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="about.php">About</a>

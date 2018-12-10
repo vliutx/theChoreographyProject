@@ -43,7 +43,7 @@ if (!isset($_SESSION['user'])){
         <a class="navbar-brand" href="about.php">About</a>
         <a class="navbar-brand" href="contact.php">Contact</a>
         <a class="navbar-brand" href="new.php">New Listing</a>
-        <a class="btn btn-primary" onclick="return log();" href="logout.php">Logout</a>
+        <a class="btn btn-primary" onclick="return log();" href="php/logout.php">Logout</a>
       </div>
     </nav>
 

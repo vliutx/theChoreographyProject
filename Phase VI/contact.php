@@ -35,7 +35,7 @@
 session_start();
 
 if (isset($_SESSION['user'])){
-  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='logout.php' onclick='return log();'>Logout</a>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='php/logout.php' onclick='return log();'>Logout</a>";
 }
 else{
   print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
@@ -52,22 +52,22 @@ else{
           <div class="col-lg-6 my-auto showcase-text">
             <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</h2>
             <br>
-            <form>
+            <form method="POST" action="php/contact.php" onsubmit="alert('Message Sent!');">
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="Your Name">
+                  <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="E-mail">
+                  <input type="text" name="email" class="form-control form-control-lg" placeholder="E-mail" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <textarea class="form-control form-control-lg" rows="4" placeholder="Message"></textarea>
+                  <textarea class="form-control form-control-lg" rows="4" placeholder="Message" name="message" required></textarea>
                 </div>
               </div>
               <br>
@@ -99,7 +99,7 @@ else{
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <div class="col-lg-12 h-100 text-center text-lg-center my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="about.php">About</a>

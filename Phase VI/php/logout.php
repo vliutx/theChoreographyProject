@@ -8,11 +8,11 @@ if (isset($_COOKIE['last'])){
 		header('Location: ' . $_COOKIE['last']);
 	}
 	else{
-		header('Location: home.php');
+		header('Location: ../home.php');
 	}
 }
 else{
-	header('Location: home.php');
+	header('Location: ../home.php');
 }
 die();
 
