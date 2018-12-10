@@ -48,7 +48,7 @@ else{
     <section class="showcase">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-2.jpg');"></div>
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-2.png');"></div>
           <div class="col-lg-6 my-auto showcase-text">
             <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</h2>
             <br>
@@ -91,7 +91,7 @@ else{
     </section>
 
     <!-- Call to Action -->
-    <section class="call-to-action text-white text-center" style="height: 20px;">
+    <section class="call-to-action2 text-white text-center" style="height: 20px;">
       <div class="overlay"></div>
     </section>
 

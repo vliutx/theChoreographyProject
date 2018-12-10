@@ -38,12 +38,13 @@ if (!isset($_GET['set'])){
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
+        <a class="navbar-brand" href="home.php">Home</a>
         <form class="form-inline" method="GET" action="result.php" style="width: 33.5% !important;">
           <input type="hidden" name="set" value="true" />
           <input type="text" class="form-control form-control-sm" name="title" style="width: 93%;" required>
           <i class="fa fa-search" style="position: relative; left: -22px;"></i>
         </form>
-        <a class="navbar-brand" href="contact.php">Contact</a>
+        
 <?php
 
 session_start();
@@ -64,7 +65,7 @@ else{
       <div class="container-fluid p-0">
 <?php
 
-$side = "left"; /*alternates between sides*/
+$side = "right"; /*alternates between sides*/
 
 /*construct SQL call*/
 $string = "SELECT * FROM TCP WHERE";
@@ -103,14 +104,14 @@ $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4me
 $query = mysqli_query($con, $string);
 while ($deets = $query->fetch_row()){
     if ($side == "left"){
-        print "<a href='item.php?id=$deets[0]'><div class='row no-gutters'><div class='col-lg-6 order-lg-2 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
-        print "<div class='col-lg-6 order-lg-1 my-auto showcase-text'><h2>$deets[3]</h2>";
+        print "<a href='item.php?id=$deets[0]' style='text-decoration: none;'><div class='row no-gutters'><div class='col-lg-6 order-lg-2 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
+        print "<div class='col-lg-6 order-lg-1 bg-secondary my-auto showcase-text text-white'><h2>$deets[3]</h2>";
         print "<p class='lead mb-0'>Genre: $deets[4]<br>Style: $deets[5]</p></div></div></a>";
         $side = "right";
     }
     else{
-        print "<a href='item.php?id=$deets[0]'><div class='row no-gutters'><div class='col-lg-6 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
-        print "<div class='col-lg-6 my-auto showcase-text'><h2>$deets[3]</h2>";
+        print "<a href='item.php?id=$deets[0]' style='text-decoration: none;'><div class='row no-gutters'><div class='col-lg-6 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
+        print "<div class='col-lg-6 my-auto bg-secondary text-white showcase-text'><h2>$deets[3]</h2>";
         print "<p class='lead mb-0'>Genre: $deets[4]<br>Style: $deets[5]</p></div></div></a>";
         $side = "left";
     }
