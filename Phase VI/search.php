@@ -54,14 +54,14 @@ else{
   	      <h2>Advanced Search</h2>
   	      <br>
   	      <form name="myForm" action="result.php" method="GET" onsubmit="return valid()">
-      		  <div class="form-row" style="justify-content: center;">
+      		  <div class="form-row justify-content-center">
       		    <div class="col-12 col-md-9 mb-2 mb-md-0">
                 <input type="hidden" name="set" value="true" />
       		      <input type="text" class="form-control form-control-lg" placeholder="Title" name="title" onmouseover="messages(0)" onmouseout="messages(4)">
       		    </div>
       		  </div>
       		  <br>
-      		  <div class="form-row" style="justify-content: center;">
+      		  <div class="form-row justify-content-center">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
                 <select class="form-control form-control-lg" name="genre" onmouseover="messages(1)" onmouseout="messages(4)">
                   <option value="" disabled selected hidden>Genre</option>
@@ -77,7 +77,7 @@ else{
               </div>
             </div>
             <br>
-      		  <div class="form-row" style="justify-content: center;">
+      		  <div class="form-row justify-content-center">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
       	        <select class="form-control form-control-lg" name="style" onmouseover="messages(2)" onmouseout="messages(4)">
       	          <option value="" disabled selected hidden>Style</option>
@@ -92,20 +92,29 @@ else{
       	      </div>
       	    </div>
       	    <br>
-      		  <div class="form-row" style="justify-content: center;">
+      		  <div class="form-row justify-content-center">
       		    <div class="col-12 col-md-9 mb-2 mb-md-0">
       		      <input type="text" class="form-control form-control-lg" name="author" placeholder="Shared by" onmouseover="messages(3)" onmouseout="messages(4)">
       		    </div>
       		  </div>
       		  <br>
-      		  <div class="form-row" style="justify-content: center;">
-      		    <button type="submit" class="btn btn-lg btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
-      		    <button type="reset" class="btn btn-lg btn-secondary">Reset</button>
+      		  <div class="form-row form-inline justify-content-center">
+              <div class="col-9">
+                <div class="row">
+                  <div class="col-6">
+                    <button type="submit" class="btn-block btn btn-lg btn-primary">Submit</button>
+                  </div>
+                  <div class="col-6">
+                    <button type="reset" class="btn-block btn btn-lg btn-secondary">Clear</button>
+                  </div>
+                </div>
+              </div>
       		  </div>
       		</form>
   		    <br><br>
-  		    <div class="form-row" style="justify-content: center;">
+  		    <div class="form-row justify-content-center">
   		      <div class="col-12 col-md-9 mb-2 mb-md-0">
+              <div class="col-3"></div>
   		        <input type="text" class="form-control form-control-lg text-white" id="adviceBox" value="Hover over a text box for help" style="text-align:center;border:none;background:none;" readonly>
   		      </div>
   		    </div>

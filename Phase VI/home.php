@@ -118,7 +118,7 @@ else{
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <form> 
               <div class="col-12 text-center">
-                <a class="btn btn-block btn-lg btn-primary" href="register.html">Register</a>
+                <a class="btn btn-block btn-lg btn-primary" href="register.php">Register</a>
               </div>
             </form>
           </div>

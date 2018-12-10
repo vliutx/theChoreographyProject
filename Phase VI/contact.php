@@ -71,9 +71,17 @@ else{
                 </div>
               </div>
               <br>
-              <div class="form-row" style="justify-content: center;">
-                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
-                <button type="reset" class="btn btn-secondary">Reset</button>
+              <div class="form-row form-inline justify-content-center">
+                <div class="col-9">
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="submit" class="btn-block btn btn-lg btn-primary">Submit</button>
+                    </div>
+                    <div class="col-6">
+                      <button type="reset" class="btn-block btn btn-lg btn-secondary">Clear</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
