@@ -68,7 +68,9 @@ else{
                   <option value="Classical">Classical</option>
                   <option value="Country">Country</option>
                   <option value="Electronic">Electronic</option>
+                  <option value="Ethnic">Ethnic</option>
                   <option value="Hip-hop">Hip-hop</option>
+                  <option value="K-pop">K-pop</option>
                   <option value="Pop">Pop</option>
                   <option value="Rock">Rock</option>
                   <option value="R&amp;B">R&amp;B</option>
@@ -85,6 +87,7 @@ else{
       	          <option value="Ballroom">Ballroom</option>
       	          <option value="Contemporary">Contemporary</option>
       	          <option value="Ethnic">Ethnic</option>
+      	          <option value="K-pop">K-pop</option>
       	          <option value="Mixed">Mixed</option>
       	          <option value="Urban">Urban</option>
       	          <option value="Other">Other</option>
@@ -143,11 +146,7 @@ else{
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
+                <a href="faq.php">FAQ</a>
               </li>
             </ul>
             <br>

@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	  <title>Contact Us</title>
+	  <title>About Us</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
-	  <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="css/all.min.css" rel="stylesheet">
@@ -28,8 +28,8 @@
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
-        <a class="navbar-brand" href="about.php">About</a>
-        <a class="navbar-brand" href="">Contact</a>
+        <a class="navbar-brand" href="">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
 session_start();
@@ -45,49 +45,42 @@ else{
       </div>
     </nav>
 
+    <!-- Image Showcases -->
     <section class="showcase">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-2.jpg');"></div>
           <div class="col-lg-6 my-auto showcase-text">
-            <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</h2>
-            <br>
-            <form>
-              <div class="form-row" style="justify-content: center;">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="Your Name">
-                </div>
-              </div>
-              <br>
-              <div class="form-row" style="justify-content: center;">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="E-mail">
-                </div>
-              </div>
-              <br>
-              <div class="form-row" style="justify-content: center;">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <textarea class="form-control form-control-lg" rows="4" placeholder="Message"></textarea>
-                </div>
-              </div>
-              <br>
-              <div class="form-row form-inline justify-content-center">
-                <div class="col-9">
-                  <div class="row">
-                    <div class="col-6">
-                      <button type="submit" class="btn-block btn btn-lg btn-primary">Submit</button>
-                    </div>
-                    <div class="col-6">
-                      <button type="reset" class="btn-block btn btn-lg btn-secondary">Clear</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
+            <h2>What is a Youtube ID?</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <p class="lead mb-0">A Youtube ID is a unique, 11 character identifier given to every video on Youtube, usually following "watch?v=" in the URL. This ID only contains alphanumeric characters and the "-" and "_" characters.</p>
           </div>
         </div>
-        <div>
-      </div>    
+        <div class="row no-gutters">
+          <div class="col-lg-6 my-auto showcase-text">
+            <h2>Why is my video unavailable when I click play?</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <p class="lead mb-0">This could be caused by a variety of reasons. When videos are uploaded to youtube, there is an option to disable embed playback. additionally, some content is copyrighted and can only be played back on the Youtube website.</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 my-auto showcase-text">
+            <h2>YUHHHHH</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <p class="lead mb-0">Our online choreography library would allow for easy browsing by end users whose goals may range from finding videos that match their preferred dance styles to branching out to unknown styles. As dancers who are constantly growing, we understand the desire to seek inspiration for future dance performances and projects. Our choreography library would offer a resource that satisfies this need, as well as create an online community through which dancers can learn from each other.</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 my-auto showcase-text">
+            <h2>YUHHHHH</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <p class="lead mb-0">Our online choreography library would allow for easy browsing by end users whose goals may range from finding videos that match their preferred dance styles to branching out to unknown styles. As dancers who are constantly growing, we understand the desire to seek inspiration for future dance performances and projects. Our choreography library would offer a resource that satisfies this need, as well as create an online community through which dancers can learn from each other.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Call to Action -->
@@ -110,7 +103,7 @@ else{
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="faq.php">FAQ</a>
+                <a href="">FAQ</a>
               </li>
             </ul>
             <br>
@@ -121,3 +114,7 @@ else{
     </footer>
   </body>
 </html>
+
+<?php
+
+?>

@@ -59,11 +59,43 @@ else{
       <div class="container-fluid p-0">
 <?php
 
-$style = $_GET['style'];
-$side = "left";
+$side = "left"; /*alternates between sides*/
+
+/*construct SQL call*/
+$string = "SELECT * FROM TCP WHERE";
+$search = array();
+$vals = array();
+if (isset($_GET['title'])){
+  $search[] = ' Title LIKE ';
+  $vals[] = $_GET['title'];
+}
+if (isset($_GET['genre'])){
+  $search[] = ' Genre=';
+  $vals[] = $_GET['genre'];
+}
+if (isset($_GET['style'])){
+  $search[] = ' Style=';
+  $vals[] = $_GET['style'];
+}
+if (isset($_GET['author'])){
+  $search[] = ' Author=';
+  $vals[] = $_GET['author'];
+}
+for ($i=0; $i < count($vals); $i++){ 
+  if ($search[$i] != ' Title LIKE '){
+    $string .= $search[$i]."'$vals[$i]'";
+  }
+  else{
+    $string .= $search[$i]."'%$vals[$i]%'";
+  }
+  if ($i != (count($vals)-1)){
+    $string .= " AND";
+  }
+}
+$string .= " ORDER BY Time DESC";
 
 $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
-$query = mysqli_query($con, "SELECT * FROM TCP WHERE Style='$style' ORDER BY Time DESC");
+$query = mysqli_query($con, $string);
 while ($deets = $query->fetch_row()){
     if ($side == "left"){
         print "<a href='item.php?id=$deets[0]'><div class='row no-gutters'><div class='col-lg-6 order-lg-2 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
@@ -104,11 +136,7 @@ mysqli_close($con);
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
+                <a href="faq.php">FAQ</a>
               </li>
             </ul>
             <br>

@@ -141,11 +141,7 @@ else{
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
+                <a href="faq.php">FAQ</a>
               </li>
             </ul>
             <br>
