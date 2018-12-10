@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -28,8 +30,11 @@
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
-        <a class="navbar-brand" href="">About</a>
-        <a class="navbar-brand" href="contact.php">Contact</a>
+        <form class="form-inline" method="GET" action="result.php" style="width: 33.5% !important;">
+        	<input type="hidden" name="set" value="true" />
+        	<input type="text" class="form-control form-control-sm" name="title" style="width: 93%;" required>
+        	<i class="fa fa-search" style="position: relative; left: -22px;"></i>
+        </form>
 <?php
 
 session_start();
@@ -74,7 +79,7 @@ else{
         </div>
         <div class="row no-gutters">
           <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
-            <h2>I accidentally listed something wrong, what can I do?</h2>
+            <h2>I accidentally listed something wrong, <br>what can I do?</h2>
           </div>
           <div class="col-lg-6 my-auto showcase-text text-secondary">
             <p class="lead mb-0">We currently don't have an update or delete feature on the website, but send us an e-mail through our contact page! Let us know what's up and we'll do what we can.</p>

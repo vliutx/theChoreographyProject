@@ -28,6 +28,6 @@ $headers .= 'Cc:' . "\r\n";
 
 mail($to,$subject,$message,$headers);
 
-header('Location: ../contact.php');
+header('Location: ../home.php');
 die();
 ?>

@@ -28,7 +28,7 @@
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
-        <a class="navbar-brand" href="">About</a>
+        <a class="navbar-brand" href="about.php">About</a>
         <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 

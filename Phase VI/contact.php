@@ -29,7 +29,7 @@
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
         <a class="navbar-brand" href="about.php">About</a>
-        <a class="navbar-brand" href="">Contact</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
 session_start();

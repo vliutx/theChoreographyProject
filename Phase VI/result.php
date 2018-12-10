@@ -25,6 +25,8 @@ if (!isset($_GET['set'])){
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -36,8 +38,11 @@ if (!isset($_GET['set'])){
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home.php">Home</a>
-        <a class="navbar-brand" href="">About</a>
+        <form class="form-inline" method="GET" action="result.php" style="width: 33.5% !important;">
+          <input type="hidden" name="set" value="true" />
+          <input type="text" class="form-control form-control-sm" name="title" style="width: 93%;" required>
+          <i class="fa fa-search" style="position: relative; left: -22px;"></i>
+        </form>
         <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
