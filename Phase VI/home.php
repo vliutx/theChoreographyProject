@@ -19,6 +19,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
@@ -30,8 +32,10 @@
         <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
+session_start();
+
 if (isset($_SESSION['user'])){
-  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-primary'>Logout</button>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='php/logout.php' onclick='return log();'>Logout</a>";
 }
 else{
   print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
@@ -50,10 +54,11 @@ else{
             <h1 class="mb-5">The Choreography Project</h1>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form>
+            <form method="GET" action="result.php">
               <div class="form-row">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="email" class="form-control form-control-lg" placeholder="">
+                  <input type="hidden" name="set" value="true" />
+                  <input type="text" name="title" class="form-control form-control-lg" placeholder="" required>
                 </div>
                 <div class="col-12 col-md-3">
                   <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
@@ -63,7 +68,7 @@ else{
           </div>
         </div>
         <div class="col-xl-9 mx-auto">
-            <br><a href="search.html" style="color:white;text-decoration:none;">Advanced Search</a>
+            <br><a href="search.php" style="color:white;text-decoration:none;">Advanced Search</a>
         </div>
       </div>
     </header>
@@ -85,18 +90,18 @@ else{
     <section class="showcase">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
-          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/bg-showcase-1.jpg');"></div>
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/bg-showcase-2.png');"></div>
           <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-            <h2>Community</h2>
-            <p class="lead mb-0">As a community of dancers, we are constantly growing and seeking inspiration from others. Our choreography library offers a resource that satisfies this need, as well as creates an online community through which dancers can interact with and learn with.</p>
+            <h2>Share &amp; Search for Videos</h2>
+            <p class="lead mb-0">Trying to find inspiration? Find and share your favorite videos by music genre and dance style.</p>
           </div>
           
         </div>
         <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-2.jpg');"></div>
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-1.jpg');"></div>
           <div class="col-lg-6 my-auto showcase-text">
-            <h2>Share &amp; Search for Videos</h2>
-            <p class="lead mb-0">Trying to find inspiration? Look no further! Iajsiofjaiosfjiaosfjioasjfioajsfo this is just filler text and I don't know what we're doing.</p>
+            <h2>Community</h2>
+            <p class="lead mb-0">As a community of dancers, we are constantly growing and seeking inspiration from others. Our choreography library offers a resource that satisfies this need, as well as creates an online community through which dancers can interact with and learn with.</p>
           </div>
         </div>
       </div>
@@ -113,7 +118,7 @@ else{
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <form> 
               <div class="col-12 text-center">
-                <a class="btn btn-block btn-lg btn-primary" href="register.html">Register</a>
+                <a class="btn btn-block btn-lg btn-primary" href="register.php">Register</a>
               </div>
             </form>
           </div>
@@ -125,7 +130,7 @@ else{
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <div class="col-lg-12 h-100 text-center text-lg-center my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="about.php">About</a>
@@ -136,11 +141,7 @@ else{
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
+                <a href="faq.php">FAQ</a>
               </li>
             </ul>
             <br>

@@ -1,22 +1,10 @@
-<?php 
-
-$id = $_GET['id'];
-
-$list = get_listed_videos();
-if (!in_array($id, $list)){
-  echo "404: Video could not be found.";
-  die();
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>The Choreography Project</title>
+	  <title>About Us</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
@@ -38,14 +26,14 @@ if (!in_array($id, $list)){
   </head>
 
   <body>
-    <!-- Navigation -->
+  	<!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
         <form class="form-inline" method="GET" action="result.php" style="width: 33.5% !important;">
-          <input type="hidden" name="set" value="true" />
-          <input type="text" class="form-control form-control-sm" name="title" style="width: 93%;" required>
-          <i class="fa fa-search" style="position: relative; left: -22px;"></i>
+        	<input type="hidden" name="set" value="true" />
+        	<input type="text" class="form-control form-control-sm" name="title" style="width: 93%;" required>
+        	<i class="fa fa-search" style="position: relative; left: -22px;"></i>
         </form>
 <?php
 
@@ -65,27 +53,43 @@ else{
     <!-- Image Showcases -->
     <section class="showcase">
       <div class="container-fluid p-0">
+      	<div class="row no-gutters">
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
+            <h2>Where do y'all get all of your listings?</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
+            <p class="lead mb-0">Our online choreography library is entirely made up of user submissions!</p>
+          </div>
+        </div>
         <div class="row no-gutters">
-          <div class="col-lg-6 showcase-img"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo $id; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-          <div class="col-lg-6 my-auto showcase-text">
-<?php 
-
-$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
-$query = mysqli_query($con, "SELECT * FROM TCP WHERE ID='$id'");
-while ($deets = $query->fetch_row()){
-  print "<h2>".$deets[3]."</h2>";
-  print "<p class='lead mb-0'>Posted by: ".$deets[2]."<br>Genre: ".$deets[4]."<br>Style: ".$deets[5]."<br>".$deets[6]."</p>";
-}
-mysqli_close($con);
-
-?>
-          </div> 
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
+            <h2>What is a Youtube ID?</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
+            <p class="lead mb-0">A Youtube ID is a unique, 11 character identifier given to every video on Youtube, usually following "watch?v=" in the URL. This ID only contains alphanumeric characters and the "-" and "_" characters.</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
+            <h2>Why is my video unavailable when I click play?</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
+            <p class="lead mb-0">This could be caused by a variety of reasons. When videos are uploaded to youtube, there is an option to disable embed playback. Additionally, some content is copyrighted and can only be played back on the Youtube website.</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 my-auto bg-secondary text-white showcase-text">
+            <h2>I accidentally listed something wrong, <br>what can I do?</h2>
+          </div>
+          <div class="col-lg-6 my-auto showcase-text text-secondary">
+            <p class="lead mb-0">We currently don't have an update or delete feature on the website, but send us an e-mail through our contact page! Let us know what's up and we'll do what we can.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Call to Action -->
-    <section class="call-to-action2 text-white text-center" style="height: 20px;">
+    <section class="call-to-action text-white text-center" style="height: 20px;">
       <div class="overlay"></div>
     </section>
 
@@ -104,7 +108,7 @@ mysqli_close($con);
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="faq.php">FAQ</a>
+                <a href="">FAQ</a>
               </li>
             </ul>
             <br>
@@ -117,18 +121,5 @@ mysqli_close($con);
 </html>
 
 <?php
-
-function get_listed_videos(){
-  $videos = array();
-
-  $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
-  $ids = mysqli_query($con, "SELECT ID FROM TCP");
-
-  while ($row = mysqli_fetch_assoc($ids)){
-    $videos[] = $row['ID'];
-  }
-  mysqli_close($con);
-  return $videos;
-}
 
 ?>

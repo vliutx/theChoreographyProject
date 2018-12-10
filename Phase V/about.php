@@ -6,6 +6,8 @@
 
 	  <title>About Us</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
@@ -17,17 +19,29 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
   	<!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home.html">Home</a>
-        <a class="navbar-brand" href="#">About</a>
-        <a class="navbar-brand" href="contact.html">Contact</a>
-        <a class="btn btn-secondary" href="register.php">Register</a>
-        <a class="btn btn-primary" href="login.html">Sign In</a>
+        <a class="navbar-brand" href="home.php">Home</a>
+        <a class="navbar-brand" href="">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
+<?php
+
+session_start();
+
+if (isset($_SESSION['user'])){
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='logout.php' onclick='return log();'>Logout</a>";
+}
+else{
+  print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
+}
+
+?>
       </div>
     </nav>
 
@@ -87,11 +101,11 @@
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
-                <a href="about.html">About</a>
+                <a href="about.php">About</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="contact.html">Contact</a>
+                <a href="contact.php">Contact</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
@@ -108,45 +122,6 @@
         </div>
       </div>
     </footer>
+
   </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-  <body>
-    
-
-	<h1>About Us</h1>
-	<div class="about">
-		The goal of our project is to construct an online library for browsing shared choreography videos by music genre and dance style. The concept of dance is something that we deeply care about since it provided us a community at UT through which we met each other. We believe that the art of dance has the power to bring people from different backgrounds together, and creating an online sharing space for choreography videos would help dancers branch out and learn more about different dance styles, as well as to expand upon the style(s) they already like. Our online choreography library would allow for easy browsing by end users whose goals may range from finding videos that match their preferred dance styles to branching out to unknown styles. As dancers who are constantly growing, we understand the desire to seek inspiration for future dance performances and projects. Our choreography library would offer a resource that satisfies this need, as well as create an online community through which dancers can learn from each other.
-		<br><br>
-		<h1>Who We Are</h1>
-		<div class="bio">
-			We're both dancers on UT FSA's Modern team. For some of our recent performances check out <a href="https://www.youtube.com/watch?v=TOYRDNqWNvI" target="_blank">here</a> and <a href="https://www.youtube.com/watch?v=WSsMd8fdjtI" target="_blank">here</a>
-			<br><br>
-			<div class="theresa">
-				<h2>Theresa Sim</h2>
-				<img src="http://i65.tinypic.com/jzz328.jpg"><br>
-				I'm a 5th year ChE. I started studying ballet at the age of 5 and branched out to modern hip hop styles in college. I had a few dance projects in high school, but I didn't start any choreography projects until 3 years ago. I'm always searching for ways to challenge and improve my skillset as a dancer, especially in the presence of fellow dancers.
-			</div>
-			<div class="vincent">
-				<h2>Vincent Liu</h2>
-				<figure>
-				<img src="https://scontent.fftw1-1.fna.fbcdn.net/v/t1.0-9/15492370_392262484442928_7034113345405396759_n.jpg?_nc_cat=0&oh=526552631fda42702d2c971575da3d13&oe=5BF6D5D6"><br>
-				</figure>
-				I'm a 3rd year BME. I had some fun 'dance' projects while I was in high school but nothing really serious. I didn't really start dancing for real until college, so it's never too late to start. Catch me @ dance classes around UT because I'm all about personal growth and improving myself as a dancer.
-			</div>
-		</div>
-	</div>
-</body>-->
 </html>

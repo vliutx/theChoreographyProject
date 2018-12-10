@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['user'])){
+	header('Location: home.php');
+	die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,9 +27,13 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS-->
+    <script type="text/javascript" src="js/process.js"></script>
   </head>
 
   <body>
@@ -34,47 +49,47 @@
     </nav>
 
     <!-- Form -->
-	<section class="call-to-action text-center text-white bg-light">
-	  <div class="overlay"></div>
-	  <div class="container">
-		<div class="row no-gutters">
-		  <div class="col-lg-12 my-auto showcase-text">
-			<h2>Sign in to your Account</h2>
-			<br>
-			<form method="post" action="login.php">
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <input type="text" name="user" class="form-control form-control-lg" placeholder="Username">
-				</div>
-			  </div>
-			  <br>
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <input type="password" name="pass" class="form-control form-control-lg" placeholder="Password">
-				</div>
-			  </div>
-			  <br>
-			  <div class="form-row" style="justify-content: center;">
-				<div class="col-12 col-md-9 mb-2 mb-md-0">
-				  <button type="submit" id="submit" name="submit" class="btn btn-block btn-lg btn-primary">Login</button>
-				</div>
-			  </div>
-			</form>
-		  </div>
-		</div>
-	  </div>
-	</section>
-		
-	<!-- Call to Action -->
-	<section class="call-to-action2 text-white text-center" style="height: 20px;">
-	  <div class="overlay"></div>
-	</section>
+  	<section class="call-to-action text-center text-white bg-light">
+  	  <div class="overlay"></div>
+  	  <div class="container">
+  		<div class="row no-gutters">
+  		  <div class="col-lg-12 my-auto showcase-text">
+  			<h2>Sign in to your Account</h2>
+  			<br>
+  			<form method="post" action="login.php" onsubmit="callServer1(event);">
+  			  <div class="form-row" style="justify-content: center;">
+  				<div class="col-12 col-md-9 mb-2 mb-md-0">
+  				  <input type="text" name="user" id="user" class="form-control form-control-lg" placeholder="Username" required>
+  				</div>
+  			  </div>
+  			  <br>
+  			  <div class="form-row" style="justify-content: center;">
+  				<div class="col-12 col-md-9 mb-2 mb-md-0">
+  				  <input type="password" name="pass" id="pass" class="form-control form-control-lg" placeholder="Password" required>
+  				</div>
+  			  </div>
+  			  <br>
+  			  <div class="form-row" style="justify-content: center;">
+  				<div class="col-12 col-md-9 mb-2 mb-md-0">
+  				  <button type="submit" id="submit" name="submit" class="btn btn-block btn-lg btn-primary">Login</button>
+  				</div>
+  			  </div>
+  			</form>
+  		  </div>
+  		</div>
+  	  </div>
+  	</section>
+  		
+  	<!-- Call to Action -->
+  	<section class="call-to-action2 text-white text-center" style="height: 20px;">
+  	  <div class="overlay"></div>
+  	</section>
 
-	<!-- Footer -->
+	  <!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <div class="col-lg-12 h-100 text-center text-lg-center my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="about.php">About</a>
@@ -85,11 +100,7 @@
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
+                <a href="faq.php">FAQ</a>
               </li>
             </ul>
             <br>
@@ -98,82 +109,5 @@
         </div>
       </div>
     </footer>
-
   </body>
 </html>
-
-<?php
-	
-if (isset($_POST['submit'])) {
-	
-	
-	if (isset($_POST["user"]) && isset($_POST["pass"])) {	
-
-
-		// Get values submitted from the login form
-		$username = $_POST["user"];
-		$password = $_POST["pass"];
-		
-		// Load list of registered usernames and passwords
-		$list = loadUsers();
-		
-		// Verify that username and password are valid
-		$found = FALSE;
-		foreach ($list as $regUser => $regPass) {
-		
-			// Verify that username exists
-			if ($username == $regUser) {
-				$found = TRUE;
-				
-				// Verify that password is correct
-				// If password is correct, start session and redirect to home page
-				if ($password == $regPass) {
-					echo "<script>alert('Thank you! Login successful.')</script>";
-					session_start();
-					$_SESSION['user'] = $username;
-					header("Location: home.php");
-					die;
-				}
-				
-				// If password is incorrect, display error message
-				// Prompts login form again
-				else {
-					echo "<script>alert('Incorrect password. Please try again.')</script>";
-				}
-			}
-		}
-		
-		// If username does not exist, display error message
-		// Prompts login form again
-		if (!$found) {
-			echo "<script>alert('Username does not exist. Please try again.')</script>";
-		}
-
-	}
-}
-
-function loadUsers() {
-	$users = Array();
-	$passes = Array();
-
-	$con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_tls3375","walk6butter9cliff","cs329e_mitra_tls3375");
-	$users_SQL = mysqli_query($con, "SELECT username FROM users");
-	$passes_SQL = mysqli_query($con, "SELECT password FROM users");
-
-	while ( $row = mysqli_fetch_assoc($users_SQL) ) {
-
-	  $users[] = $row['username'];
-
-	}
-	while ( $row = mysqli_fetch_assoc($passes_SQL) ) {
-
-	  $passes[] = $row['password'];
-
-	}
-		
-	mysqli_close($con);
-	$list = array_combine($users, $passes);
-	return $list;
-}
-
-?>

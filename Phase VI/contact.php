@@ -6,6 +6,8 @@
 
 	  <title>Contact Us</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
 	  <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
@@ -17,6 +19,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
@@ -25,11 +29,13 @@
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
         <a class="navbar-brand" href="about.php">About</a>
-        <a class="navbar-brand" href="">Contact</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
 <?php
 
+session_start();
+
 if (isset($_SESSION['user'])){
-  print "<a class='navbar-brand' href='new.php'>New Listing</a><button class='btn btn-primary'>Logout</button>";
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='php/logout.php' onclick='return log();'>Logout</a>";
 }
 else{
   print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
@@ -42,32 +48,40 @@ else{
     <section class="showcase">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-2.jpg');"></div>
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/bg-showcase-2.png');"></div>
           <div class="col-lg-6 my-auto showcase-text">
             <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</h2>
             <br>
-            <form>
+            <form method="POST" action="php/contact.php" onsubmit="alert('Message Sent!');">
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="Your Name">
+                  <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="E-mail">
+                  <input type="text" name="email" class="form-control form-control-lg" placeholder="E-mail" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <textarea class="form-control form-control-lg" rows="4" placeholder="Message"></textarea>
+                  <textarea class="form-control form-control-lg" rows="4" placeholder="Message" name="message" required></textarea>
                 </div>
               </div>
               <br>
-              <div class="form-row" style="justify-content: center;">
-                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
-                <button type="reset" class="btn btn-secondary">Reset</button>
+              <div class="form-row form-inline justify-content-center">
+                <div class="col-9">
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="submit" class="btn-block btn btn-lg btn-primary">Submit</button>
+                    </div>
+                    <div class="col-6">
+                      <button type="reset" class="btn-block btn btn-lg btn-secondary">Clear</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -77,7 +91,7 @@ else{
     </section>
 
     <!-- Call to Action -->
-    <section class="call-to-action text-white text-center" style="height: 20px;">
+    <section class="call-to-action2 text-white text-center" style="height: 20px;">
       <div class="overlay"></div>
     </section>
 
@@ -85,7 +99,7 @@ else{
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <div class="col-lg-12 h-100 text-center text-lg-center my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
                 <a href="about.php">About</a>
@@ -96,11 +110,7 @@ else{
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-              <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
+                <a href="faq.php">FAQ</a>
               </li>
             </ul>
             <br>

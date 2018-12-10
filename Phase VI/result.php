@@ -1,11 +1,8 @@
-<?php 
+<?php
 
-$id = $_GET['id'];
-
-$list = get_listed_videos();
-if (!in_array($id, $list)){
-  echo "404: Video could not be found.";
-  die();
+if (!isset($_GET['set'])){
+    echo "404: Page not found.";
+    die();
 }
 
 ?>
@@ -16,7 +13,7 @@ if (!in_array($id, $list)){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>The Choreography Project</title>
+    <title>Results</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
@@ -47,6 +44,7 @@ if (!in_array($id, $list)){
           <input type="text" class="form-control form-control-sm" name="title" style="width: 93%;" required>
           <i class="fa fa-search" style="position: relative; left: -22px;"></i>
         </form>
+        
 <?php
 
 session_start();
@@ -65,27 +63,67 @@ else{
     <!-- Image Showcases -->
     <section class="showcase">
       <div class="container-fluid p-0">
-        <div class="row no-gutters">
-          <div class="col-lg-6 showcase-img"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo $id; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-          <div class="col-lg-6 my-auto showcase-text">
-<?php 
+<?php
+
+$side = "right"; /*alternates between sides*/
+
+/*construct SQL call*/
+$string = "SELECT * FROM TCP WHERE";
+$search = array();
+$vals = array();
+if (isset($_GET['title'])){
+  $search[] = ' Title LIKE ';
+  $vals[] = $_GET['title'];
+}
+if (isset($_GET['genre'])){
+  $search[] = ' Genre=';
+  $vals[] = $_GET['genre'];
+}
+if (isset($_GET['style'])){
+  $search[] = ' Style=';
+  $vals[] = $_GET['style'];
+}
+if (isset($_GET['author'])){
+  $search[] = ' Author=';
+  $vals[] = $_GET['author'];
+}
+for ($i=0; $i < count($vals); $i++){ 
+  if ($search[$i] != ' Title LIKE '){
+    $string .= $search[$i]."'$vals[$i]'";
+  }
+  else{
+    $string .= $search[$i]."'%$vals[$i]%'";
+  }
+  if ($i != (count($vals)-1)){
+    $string .= " AND";
+  }
+}
+$string .= " ORDER BY Time DESC";
 
 $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
-$query = mysqli_query($con, "SELECT * FROM TCP WHERE ID='$id'");
+$query = mysqli_query($con, $string);
 while ($deets = $query->fetch_row()){
-  print "<h2>".$deets[3]."</h2>";
-  print "<p class='lead mb-0'>Posted by: ".$deets[2]."<br>Genre: ".$deets[4]."<br>Style: ".$deets[5]."<br>".$deets[6]."</p>";
+    if ($side == "left"){
+        print "<a href='item.php?id=$deets[0]' style='text-decoration: none;'><div class='row no-gutters'><div class='col-lg-6 order-lg-2 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
+        print "<div class='col-lg-6 order-lg-1 bg-secondary my-auto showcase-text text-white'><h2>$deets[3]</h2>";
+        print "<p class='lead mb-0'>Genre: $deets[4]<br>Style: $deets[5]</p></div></div></a>";
+        $side = "right";
+    }
+    else{
+        print "<a href='item.php?id=$deets[0]' style='text-decoration: none;'><div class='row no-gutters'><div class='col-lg-6 text-white showcase-img' style='background-image: url(\"https://i.ytimg.com/vi/$deets[0]/maxresdefault.jpg\");'></div>";
+        print "<div class='col-lg-6 my-auto bg-secondary text-white showcase-text'><h2>$deets[3]</h2>";
+        print "<p class='lead mb-0'>Genre: $deets[4]<br>Style: $deets[5]</p></div></div></a>";
+        $side = "left";
+    }
 }
 mysqli_close($con);
 
 ?>
-          </div> 
-        </div>
       </div>
     </section>
 
     <!-- Call to Action -->
-    <section class="call-to-action2 text-white text-center" style="height: 20px;">
+    <section class="call-to-action text-white text-center" style="height: 20px;">
       <div class="overlay"></div>
     </section>
 
@@ -115,20 +153,3 @@ mysqli_close($con);
     </footer>
   </body>
 </html>
-
-<?php
-
-function get_listed_videos(){
-  $videos = array();
-
-  $con = mysqli_connect("fall-2018.cs.utexas.edu","cs329e_mitra_vl5649","target4mercy-Know","cs329e_mitra_vl5649");
-  $ids = mysqli_query($con, "SELECT ID FROM TCP");
-
-  while ($row = mysqli_fetch_assoc($ids)){
-    $videos[] = $row['ID'];
-  }
-  mysqli_close($con);
-  return $videos;
-}
-
-?>

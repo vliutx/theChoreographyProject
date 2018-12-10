@@ -6,6 +6,8 @@
 
     <title>The Choreography Project</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
@@ -17,17 +19,29 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
   <body>
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Home</a>
-        <a class="navbar-brand" href="about.html">About</a>
-        <a class="navbar-brand" href="contact.html">Contact</a>
-        <a class="btn btn-secondary" href="register.php">Register</a>
-        <a class="btn btn-primary" href="login.html">Sign In</a>
+        <a class="navbar-brand" href="">Home</a>
+        <a class="navbar-brand" href="about.php">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
+<?php
+
+session_start();
+
+if (isset($_SESSION['user'])){
+  print "<a class='navbar-brand' href='new.php'>New Listing</a><a class='btn btn-primary' href='logout.php' onclick='return log();'>Logout</a>";
+}
+else{
+  print "<a class='navbar-brand' href='login.php'>Sign In</a><a class='btn btn-primary' href='register.php'>Register</a>";
+}
+
+?>
       </div>
     </nav>
 
@@ -53,7 +67,7 @@
           </div>
         </div>
         <div class="col-xl-9 mx-auto">
-            <br><a href="search.html" style="color:white;text-decoration:none;">Advanced Search</a>
+            <br><a href="search.php" style="color:white;text-decoration:none;">Advanced Search</a>
         </div>
       </div>
     </header>
@@ -118,11 +132,11 @@
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2">
               <li class="list-inline-item">
-                <a href="about.html">About</a>
+                <a href="about.php">About</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="contact.html">Contact</a>
+                <a href="contact.php">Contact</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">

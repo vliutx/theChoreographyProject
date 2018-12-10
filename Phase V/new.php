@@ -27,13 +27,10 @@ if (!isset($_SESSION['user'])){
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script type="text/javascript" src="js/list.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
   </head>
 
@@ -42,13 +39,10 @@ if (!isset($_SESSION['user'])){
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="home.php">Home</a>
-        <form class="form-inline" method="GET" action="result.php" style="width: 33.5% !important;">
-          <input type="hidden" name="set" value="true" />
-          <input type="text" class="form-control form-control-sm" name="title" style="width: 93%;" required>
-          <i class="fa fa-search" style="position: relative; left: -22px;"></i>
-        </form>
+        <a class="navbar-brand" href="about.php">About</a>
+        <a class="navbar-brand" href="contact.php">Contact</a>
         <a class="navbar-brand" href="new.php">New Listing</a>
-        <a class="btn btn-primary" onclick="return log();" href="php/logout.php">Logout</a>
+        <a class="btn btn-primary" onclick="return log();" href="logout.php">Logout</a>
       </div>
     </nav>
 
@@ -60,56 +54,53 @@ if (!isset($_SESSION['user'])){
           <div class="col-lg-12 my-auto showcase-text">
             <h2>New Listing</h2>
             <br>
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="ifexists(event);">
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" id="id" class="form-control form-control-lg" placeholder="Youtube ID" required>
+                  <input type="text" class="form-control form-control-lg" placeholder="Youtube ID" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" id="title" class="form-control form-control-lg" placeholder="Title" required>
+                  <input type="text" class="form-control form-control-lg" placeholder="Title" required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <select class="form-control form-control-lg" id="genre" required>
+                  <select class="form-control form-control-lg" required>
                       <option value="" disabled selected hidden>Genre</option>
-                      <option value="Classical">Classical</option>
-                      <option value="Country">Country</option>
-                      <option value="Electronic">Electronic</option>
-                      <option value="Ethnic">Ethnic</option>
-                      <option value="Hip-hop">Hip-hop</option>
-                      <option value="K-pop">K-pop</option>
-                      <option value="Pop">Pop</option>
-                      <option value="Rock">Rock</option>
-                      <option value="R&amp;B">R&amp;B</option>
-                      <option value="Other">Other</option>
+                      <option>Classical</option>
+                      <option>Country</option>
+                      <option>Electronic</option>
+                      <option>Hip-hop</option>
+                      <option>Pop</option>
+                      <option>Rock</option>
+                      <option>R&amp;B</option>
+                      <option>Other</option>
                   </select>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <select class="form-control form-control-lg" id="style" required>
+                  <select class="form-control form-control-lg" required>
                       <option value="" disabled selected hidden>Style</option>
-                      <option value="Ballet">Ballet</option>
-                      <option value="Ballroom">Ballroom</option>
-                      <option value="Contemporary">Contemporary</option>
-                      <option value="Ethnic">Ethnic</option>
-                      <option value="K-pop">K-pop</option>
-                      <option value="Mixed">Mixed</option>
-                      <option value="Urban">Urban</option>
-                      <option value="Other">Other</option>
+                      <option>Ballet</option>
+                      <option>Ballroom</option>
+                      <option>Contemporary</option>
+                      <option>Ethnic</option>
+                      <option>Mixed</option>
+                      <option>Urban</option>
+                      <option>Other</option>
                   </select>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <textarea class="form-control form-control-lg" rows="3" placeholder="Brief Description" id="descrip"></textarea>
+                  <textarea class="form-control form-control-lg" rows="3" placeholder="Brief Description"></textarea>
                 </div>
               </div>
               <br>
@@ -144,7 +135,11 @@ if (!isset($_SESSION['user'])){
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item">
-                <a href="faq.php">FAQ</a>
+                <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
               </li>
             </ul>
             <br>
@@ -157,5 +152,6 @@ if (!isset($_SESSION['user'])){
 </html>
 
 <?php
+
 
 ?>
