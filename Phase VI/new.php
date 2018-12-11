@@ -5,6 +5,7 @@ session_start();
 if (!isset($_SESSION['user'])){
   header('Location: login.php');
   die();
+
 }
 
 ?>
@@ -63,19 +64,19 @@ if (!isset($_SESSION['user'])){
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="ifexists(event);">
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" id="id" class="form-control form-control-lg" placeholder="Youtube ID" required>
+                  <input type="text" id="id" class="form-control form-control-lg" placeholder="Youtube ID" data-toggle="tooltip" data-placement="right" title="The Youtube ID follows after 'watch?v=' in the video's URL." required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="text" id="title" class="form-control form-control-lg" placeholder="Title" required>
+                  <input type="text" id="title" class="form-control form-control-lg" placeholder="Title" data-toggle="tooltip" data-placement="right" title="Feel free to copy the video's original title, or re-title the video yourself." required>
                 </div>
               </div>
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <select class="form-control form-control-lg" id="genre" required>
+                  <select class="form-control form-control-lg" id="genre" data-toggle="tooltip" data-placement="right" title="Choose the music genre that most closely matches that of the video you're sharing." required>
                       <option value="" disabled selected hidden>Genre</option>
                       <option value="Classical">Classical</option>
                       <option value="Country">Country</option>
@@ -93,7 +94,7 @@ if (!isset($_SESSION['user'])){
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <select class="form-control form-control-lg" id="style" required>
+                  <select class="form-control form-control-lg" id="style" data-toggle="tooltip" data-placement="right" title="Choose the dance style that most closely matches that of the video you're sharing." required>
                       <option value="" disabled selected hidden>Style</option>
                       <option value="Ballet">Ballet</option>
                       <option value="Ballroom">Ballroom</option>
@@ -109,7 +110,7 @@ if (!isset($_SESSION['user'])){
               <br>
               <div class="form-row" style="justify-content: center;">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <textarea class="form-control form-control-lg" rows="3" placeholder="Brief Description" id="descrip"></textarea>
+                  <textarea class="form-control form-control-lg" rows="3" placeholder="Brief Description" id="descrip" data-toggle="tooltip" data-placement="right" title="(Optional) Describe the video you're sharing in a as many words as you'd like."></textarea>
                 </div>
               </div>
               <br>
@@ -153,6 +154,13 @@ if (!isset($_SESSION['user'])){
         </div>
       </div>
     </footer>
+	
+	<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();   
+	});
+	</script>
+	
   </body>
 </html>
 
